@@ -1,0 +1,28 @@
+	\begin{tikzpicture}[>=stealth][scale = 1.1]
+	% Рисуем сетку
+\draw[help lines, step=0.25, dotted]
+(-0.5,-0.5) grid (2.,2.55);
+% Начало координат
+\draw[->, thin] (-0.5,0) -- (2.05,0)
+node[below] {$x$}; % Ox
+\draw[->, thin] (0,-0.5) -- (0, 2.55)
+node[left] {$y$}; % Oy
+
+\draw[->, blue,  line width =.03cm] (0, 0) -- (0,0.5);
+\draw[->, red,  line width =.03cm] (0, 0) -- (0.5, 0);
+
+\draw[dotted, line width =.03cm] (1.3, 1.8) -- (0, 1.8);
+\draw[dotted, line width =.03cm] (1.3, 0) -- (1.3, 1.8);
+
+\draw [fill = black] (1.3, 1.8) circle(1.5 pt);
+
+\draw[->, line width =.03cm](0, 0) -- (1.3, 1.8);
+
+
+\node[below, red] at (1.3, 0) {$a$};
+\node[left, blue] at (0, 1.8) {$b$};
+
+\node at (1, 2.2) {$z = \color{red}{a} \color{black}{+} \color{blue}{b}\color{black}{i}$}
+
+
+	\end{tikzpicture}

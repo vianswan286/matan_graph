@@ -1,0 +1,34 @@
+\documentclass{standalone}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\pgfplotsset{width=10cm,compat=1.9}
+
+\begin{document}
+    \begin{tikzpicture}
+        \begin{axis}
+            [
+            axis lines = middle, 
+            xlabel = {$x$},
+            ylabel = {$y$},
+            xtick ={4, 5},
+            xticklabels={$x_0$, $ $},
+            ytick={1.33, 4},
+            yticklabels={$A$, $ $},
+            xmax = 5,
+            ymax = 2
+            ]
+            \addplot[]{x^(1/2)+cos(deg(x))};
+        \end{axis}
+            \draw[] (6.55, 3.35) circle (1pt);
+            \draw[dotted] (0, 2.8) -- (8, 2.8);
+            \draw[<->] (5, 2.8) -- (5, 3.8);
+            \draw[dotted] (0, 3.8) -- (8, 3.8);
+            \node[left] at (5, 3.25) {$2\varepsilon$};
+            \draw[dotted] (6.3, 0) -- (6.3, 7);
+            \draw[<->] (6.3, 1) -- (6.9, 1);
+            \draw[dotted] (6.9, 0) -- (6.9, 7);
+            \node[above] at (6.55, 1) {$2\delta$};
+            
+    \end{tikzpicture}
+\end{document}

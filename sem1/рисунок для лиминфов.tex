@@ -1,0 +1,58 @@
+\begin{tikzpicture}[scale = 1.05]
+    % Рисуем сетку
+    \draw[help lines, step=0.25, dotted]
+    (-4.5,-5) grid (7,5);
+    % Начало координат
+    \draw[->, thin] (-4.5,-5) -- (7.05,-5);
+    \node[below, scale = 0.75] at (7.7,-5) {$\quad n, \  n\in \N$}; % Ox
+    \draw[->, thin] (-4.5,-5) -- (-4.5,5.05)
+    node[left, scale = 0.75] {$x_{n}, x_{n} \in \R$}; % Oy
+
+    \draw[dotted, line width =.02cm] (0, -5) -- (0, 5);
+    \node[right] at (0,3) {$\textrm{Отсечём <<хвост>>}$};
+
+    \draw[fill = black] (-4, -1) circle (1.25pt);
+    \draw[fill = black] (-3, 0.5) circle (1.25pt);
+    \draw[fill = black] (-2, 4.5) circle (1.25pt);
+    \draw[fill = black] (-1, 3) circle (1.25pt);
+    \draw[fill = black] (0, 0) circle (1.25pt);
+    \draw[fill = black] (1, -1.5) circle (1.25pt);
+    \draw[fill = black] (2, 1) circle (1.25pt);
+    \draw[fill = black] (3, -4) circle (1.25pt);
+    \draw[fill = black] (4, -0.5) circle (1.25pt);
+    \draw[fill = black] (5, -3) circle (1.25pt);
+    \draw[fill = black] (6, -1.5) circle (1.25pt);
+
+    \draw[red, fill = red] (-4, 4.5) circle (2pt);
+    \draw[red, fill = red] (-3, 4.5) circle (2pt);
+    \draw[red] (-2, 4.5) circle (2pt);
+    \draw[red] (-1, 3) circle (2pt);
+    \draw[red, fill = red] (0, 1) circle (2pt);
+    \draw[red, fill = red] (1, 1) circle (2pt);
+    \draw[red]  (2, 1) circle (2pt);
+    \draw[red, fill = red] (3, -0.5) circle (2pt);
+    \draw[red]  (4, -0.5) circle (2pt);
+    \draw[red, fill = red] (5, -1.5) circle (2pt);
+    \draw[red]  (6, -1.5) circle (2pt);
+
+
+
+    \node[below, scale =0.65] at (-4, -5.1) {$1$};
+    \node[below, scale =0.65] at (-3, -5.1) {$2$};
+    \node[below, scale =0.65] at (-2, -5.1) {$3$};
+    \node[below, scale =0.65] at (-1, -5.1) {$4$};
+    \node[below, scale =0.65] at (-0.5, -5.3) {$\ldots$};
+    \node[below, scale =0.65] at (-0, -5.18) {$m$};
+    \node[below, scale =0.65] at (1, -5.1) {$m+1$};
+    \node[below, scale =0.65] at (2, -5.1) {$m+2$};
+    \node[below, scale =0.65] at (3, -5.1) {$m+3$};
+    \node[below, scale =0.65] at (4, -5.1) {$m+4$};
+    \node[below, scale =0.65] at (5, -5.1) {$m+5$};
+    \node[below, scale =0.65] at (6, -5.1) {$m+6$};
+    \node[below, scale =0.65] at (6.75, -5.3) {$\ldots$};
+        
+    \draw[line width =.05cm, red] (4.25, 4) -- (5.25, 4);
+    \draw[line width =.05cm ] (4.25, 3) -- (5.25, 3);
+    \node[red] at (6, 4) {$\sup\limits_{k \geq n} x_{k}$};
+    \node at (5.7, 3) {$x_{n}$};
+    \end{tikzpicture}
