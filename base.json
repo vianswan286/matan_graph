@@ -1,0 +1,235 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "matan",
+        "formDescription": "скинь latex файл чтобы добавить",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "файл",
+              "fieldType": "file",
+              "acceptFileTypes": ".tex"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [
+        -260,
+        -100
+      ],
+      "id": "962fc2df-b496-420c-8fdd-40ca05f9bb57",
+      "name": "On form submission",
+      "webhookId": "046333ff-7c3a-4a39-8e5a-32ad156314d9"
+    },
+    {
+      "parameters": {
+        "language": "python",
+        "pythonCode": "import base64\n\n# Список для накопления результатов\noutput = []\n\n# Перебираем все входящие items\nfor item in items:\n    # Если в айтеме нет ключа \"binary\" — пропускаем\n    if 'binary' not in item or not item['binary']:\n        continue\n\n    # Итерируемся по всем бинарным полям в этом айтеме\n    for key, bin_data in item['binary'].items():\n        # bin_data[\"data\"] — это строка Base64\n        raw_bytes = base64.b64decode(bin_data['data'])\n        text = raw_bytes.decode('utf-8')\n\n        # Собираем новый айтем в формате n8n\n        output.append({\n            \"json\": {\n                # сохраняем имя файла, если есть, иначе — ключ поля\n                \"fileName\": bin_data.get('fileName', key),\n                \"content\": text\n            }\n        })\n\n# Возвращаем список айтемов n8n\nreturn output\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -40,
+        -100
+      ],
+      "id": "a9f29aaf-d0c9-4597-a964-c3a5887abd6f",
+      "name": "parse data"
+    },
+    {
+      "parameters": {
+        "model": "meta-llama/llama-4-maverick",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        380,
+        120
+      ],
+      "id": "6d353d61-11ce-4861-b280-3f1e6a4cc3a1",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "p4DB5Nc3DKYeBgKL",
+          "name": "shared"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "fileName",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        200,
+        -100
+      ],
+      "id": "366dd222-b6c3-40b5-a147-18eefc0203b5",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"definitions\": {\n      \"type\": \"array\",\n      \"description\": \"Список определений терминов\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"term\": {\n            \"type\": \"string\",\n            \"description\": \"Сам термин или понятие\"\n          },\n          \"definition\": {\n            \"type\": \"string\",\n            \"description\": \"Описание или объяснение термина\"\n          }\n        },\n        \"required\": [\"term\", \"definition\"],\n        \"description\": \"Объект, описывающий один термин и его определение\"\n      }\n    },\n    \"theorems\": {\n      \"type\": \"array\",\n      \"description\": \"Список теорем\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"name\": {\n            \"type\": \"string\",\n            \"description\": \"Название теоремы\"\n          },\n          \"formulation\": {\n            \"type\": \"string\",\n            \"description\": \"Формулировка теоремы\"\n          },\n          \"proof\": {\n            \"type\": \"string\",\n            \"description\": \"Доказательство теоремы\"\n          }\n        },\n        \"required\": [\"name\", \"formulation\", \"proof\"],\n        \"description\": \"Объект, описывающий одну теорему\"\n      }\n    }\n  },\n  \"required\": [\"definitions\", \"theorems\"],\n  \"description\": \"Корневая структура, содержащая определения и теоремы\"\n}\n",
+        "autoFix": true
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        520,
+        120
+      ],
+      "id": "4a535036-bc10-4243-9c19-7703a9db43de",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "model": "meta-llama/llama-4-maverick",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        540,
+        300
+      ],
+      "id": "5c865df4-5889-4cfc-a79d-4975f7e6f7e2",
+      "name": "OpenRouter Chat Model1",
+      "credentials": {
+        "openRouterApi": {
+          "id": "p4DB5Nc3DKYeBgKL",
+          "name": "shared"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.content }}",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "Ты робот для разбора лекций по математике на понятия: Определения и теоремы. Леммы и Следствия - тоже теоремы. Ты возвращаешь список определений и теоремвместе с их доказательствами.\n\nТОЛЬКО ЦИТИРУЙ ПРЕДОСТАВЛЕННЫЕ ТЕБЕ ДАННЫЕ НИЧЕГО ИЗ ГОЛОВЫ НЕ БЕРИ. НЕ ДЕЛАЙ СОКРАЩЕНИЙ. ПРОСТО РАЗБЕРИ ТЕКСТ НА ПОНЯИЯ И ТЕОРЕМЫ В ТОМ ЖЕ LATEX ВИДЕ В КОТОРОМ ОНИ ТЕБЕ ПРЕДСТАВЛЕННЫ. ДАЙ РЕАЛЬНЫЕ ДАННЫЕ ИЗ ТЕКСТА И ТОЛЬКО ИХ"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        440,
+        -100
+      ],
+      "id": "4e0db9c1-d74d-4741-86ab-2d20bd875846",
+      "name": "Привести к структуре",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "output.definitions",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        860,
+        -100
+      ],
+      "id": "6027d058-f962-4bea-afeb-f86bf884f6ed",
+      "name": "Определения"
+    }
+  ],
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "parse data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "parse data": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Привести к структуре",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Привести к структуре",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Привести к структуре",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Structured Output Parser",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Привести к структуре": {
+      "main": [
+        [
+          {
+            "node": "Определения",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Определения": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "895500a397a3e801b63ba89a7767be9b5fd9a0d0cae8bd221476442daa439321"
+  }
+}
