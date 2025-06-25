@@ -1,0 +1,7 @@
+langchain
+langchain-openai
+python-dotenv
+pandas
+scikit-learn
+sentence-transformers
+torch

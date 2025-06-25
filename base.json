@@ -141,6 +141,279 @@
       ],
       "id": "6027d058-f962-4bea-afeb-f86bf884f6ed",
       "name": "Определения"
+    },
+    {
+      "parameters": {
+        "mode": "load",
+        "pineconeIndex": {
+          "__rl": true,
+          "value": "matan",
+          "mode": "list",
+          "cachedResultName": "matan"
+        },
+        "prompt": "={{ 'term: ' + '\"' + $('Loop Over Items').item.json.term + '\"' + \",\\ndefenition: \" + '\"'+ $('Loop Over Items').item.json.definition + '\"'}}",
+        "topK": 5,
+        "includeDocumentMetadata": false,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1.3,
+      "position": [
+        -180,
+        660
+      ],
+      "id": "275ab686-ec16-4819-b318-005200a7d6b8",
+      "name": "Pinecone Vector Store1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "pineconeApi": {
+          "id": "KwVudSS16N8g2aau",
+          "name": "medical"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsHuggingFaceInference",
+      "typeVersion": 1,
+      "position": [
+        -120,
+        920
+      ],
+      "id": "26351a9a-b9bb-45e1-b4cf-9b43b3740509",
+      "name": "Embeddings HuggingFace Inference1",
+      "credentials": {
+        "huggingFaceApi": {
+          "id": "1UVD9N7ledB3326j",
+          "name": "HuggingFaceApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "=define",
+        "text": "=Рассматриваем term: {{ $node[\"Loop Over Items\"].json.term }}, definition: {{ $node[\"Loop Over Items\"].json.definition }}. В базе есть: {{ $json.prompt }}\n",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        660,
+        660
+      ],
+      "id": "f9b94a73-cc03-452a-aee2-a18a5613c6d9",
+      "name": "AI Agent1",
+      "executeOnce": false,
+      "retryOnFail": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "model": "meta-llama/llama-4-maverick",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        620,
+        920
+      ],
+      "id": "3659e5f9-f441-432a-9c3f-70fd0ce63523",
+      "name": "OpenRouter Chat Model2",
+      "credentials": {
+        "openRouterApi": {
+          "id": "p4DB5Nc3DKYeBgKL",
+          "name": "shared"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -420,
+        640
+      ],
+      "id": "f432c535-277e-4453-9c0f-ccc109dc2de2",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        180,
+        660
+      ],
+      "id": "e49adf1f-68f6-4553-84aa-55f0d70d3867",
+      "name": "Aggregate",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "6d467b0f-b1b5-44a4-87f7-517c05fd7c87",
+              "leftValue": "={{ $json.output.existsInDatabase }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1060,
+        660
+      ],
+      "id": "4e0d85d0-166d-438b-b16d-320d83871cda",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"term\": {\n      \"type\": \"string\",\n      \"description\": \"Наименование математического термина\"\n    },\n    \"definition\": {\n      \"type\": \"string\",\n      \"description\": \"Определение термина\"\n    },\n    \"existsInDatabase\": {\n      \"type\": \"boolean\",\n      \"description\": \"Признак, что такой термин уже есть в базе\"\n    }\n  },\n  \"required\": [\"term\", \"definition\", \"existsInDatabase\"]\n}\n",
+        "autoFix": true
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        820,
+        900
+      ],
+      "id": "cae8f36b-f9e6-475b-a4d2-b60d54187b9a",
+      "name": "Structured Output Parser1"
+    },
+    {
+      "parameters": {
+        "model": "meta-llama/llama-4-maverick",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        840,
+        1060
+      ],
+      "id": "e62cb184-ef9e-4e2a-b7d0-14a1fff1bea0",
+      "name": "OpenRouter Chat Model3",
+      "credentials": {
+        "openRouterApi": {
+          "id": "p4DB5Nc3DKYeBgKL",
+          "name": "shared"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Function node (JavaScript)\nreturn items.map(item => {\n  const term       = item.json.term;\n  const definition = item.json.definition;\n  // Если у вас есть заранее сгенерированная база в item.json.base — замените на своё поле\n  const baseInfo   = item.json.base ?? ''; \n\n  const prompt = 'Рассматриваем term: ' + $('Loop Over Items').item.json.term + ', definition: ' + $('Loop Over Items').item.json.definition + 'В базе есть: ' + baseInfo;\n\n  return {\n    json: {\n      ...item.json,\n      prompt\n    }\n  };\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        400,
+        660
+      ],
+      "id": "31c1b01d-a5a1-4722-a59e-c78acfecc212",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "pineconeIndex": {
+          "__rl": true,
+          "value": "matan",
+          "mode": "list",
+          "cachedResultName": "matan"
+        },
+        "embeddingBatchSize": 1,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1.3,
+      "position": [
+        1340,
+        680
+      ],
+      "id": "0d5cce93-0a74-40ee-8fbb-75c05762b918",
+      "name": "Pinecone Vector Store2",
+      "credentials": {
+        "pineconeApi": {
+          "id": "KwVudSS16N8g2aau",
+          "name": "medical"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsHuggingFaceInference",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        940
+      ],
+      "id": "258a67a8-a105-4c39-ad08-aa492407901a",
+      "name": "Embeddings HuggingFace Inference2",
+      "credentials": {
+        "huggingFaceApi": {
+          "id": "1UVD9N7ledB3326j",
+          "name": "HuggingFaceApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonMode": "expressionData",
+        "jsonData": "={  \n  \"term\": \"{{ $node[\"Loop Over Items\"].json.term }}\",  \n  \"definition\": \"{{ $node[\"Loop Over Items\"].json.definition }}\"  \n}\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1.1,
+      "position": [
+        1520,
+        940
+      ],
+      "id": "3c1dd515-c58c-491b-8356-04086cccaf8a",
+      "name": "Default Data Loader1"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1080,
+        -100
+      ],
+      "id": "ff21e0a8-c51b-4a35-b355-f2cf6a5cfd88",
+      "name": "Aggregate1"
     }
   ],
   "connections": {
@@ -223,7 +496,152 @@
     },
     "Определения": {
       "main": [
+        [
+          {
+            "node": "Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pinecone Vector Store1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings HuggingFace Inference1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone Vector Store1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Pinecone Vector Store1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Pinecone Vector Store2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Structured Output Parser1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pinecone Vector Store2": {
+      "main": [
         []
+      ]
+    },
+    "Embeddings HuggingFace Inference2": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone Vector Store2",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader1": {
+      "ai_document": [
+        [
+          {
+            "node": "Pinecone Vector Store2",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
       ]
     }
   },

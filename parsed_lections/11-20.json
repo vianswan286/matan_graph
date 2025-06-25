@@ -1,0 +1,397 @@
+[
+    {
+      "data": [
+        {
+          "output": {
+            "definitions": [
+              {
+                "term": "Функция $\\arcsin x$",
+                "definition": "по определению обратна к $\\sin x$ на отрезке $\\left[-\\cfrac{\\pi}{2}, \\cfrac{\\pi}{2}\\right]$"
+              },
+              {
+                "term": "Функция $\\arccos x$",
+                "definition": "по определению обратна к $\\sin x$ на отрезке $\\left[0, \\pi\\right]$"
+              }
+            ],
+            "theorems": [
+              {
+                "name": "Предел композиции 2",
+                "formulation": "Пусть $f: U_{\\sigma_{0}} (y_{0}) \\mapsto \\R, \\  y: \\mathring{U}_{\\delta_{0}} (x_{0}) \\mapsto U_{\\sigma_{0}}(y_{0}). $ Пусть $f$ непрерывна в точке $y_0$ и $\\lim\\limits_{x \\to x_{0}} y(x) = y_{0}$, Тогда: $ \\exists \\lim\\limits_{x \\to x_{0}} f \\circ y(x) = \\lim\\limits_{x\\to x_{0}} f(y(x)) = f(y_{0}) $",
+                "proof": "$$\\begin{cases} \\forall \\epsilon > 0 \\ \\exists \\sigma(\\epsilon) \\in (0, \\sigma_{0}): \\ \\forall y \\in U_{\\sigma(\\epsilon)}(y_{0}) \\hookrightarrow |f(y) - f(y_{0})| < \\epsilon \\\\ \\forall \\sigma > 0 \\ \\exists \\delta(\\sigma) \\in (0, \\delta_{0}): \\ \\forall y \\in U_{\\delta(\\sigma)}(x_{0}) \\hookrightarrow |y(x) - y_{0}| < \\sigma \\end{cases}$$ Объединяя высказывания, получим: $$ \\forall \\epsilon > 0 \\ \\exists \\widetilde{\\delta}(\\epsilon)=\\delta(\\sigma(\\epsilon)) \\in (0, \\delta_{0}) $$ $$ \\forall x \\in \\mathring{U}_{\\widetilde{\\delta}_{\\epsilon}}(x_{0}) \\hookrightarrow y(x) \\in U_{\\sigma(\\epsilon)}(y_{0}),\\quad \\textrm{а значит} \\quad |f(y(x)) - f(y_{0})| < \\epsilon $$ В итоге, получаем: $$ \\forall \\epsilon > 0 \\ \\exists \\widetilde{\\delta}(\\epsilon) \\in (0, \\delta_{0}): \\forall x \\in \\mathring{U}_{\\delta(\\epsilon)}(x_{0}) \\hookrightarrow  |f(y(x)) - f(y_{0})| < \\epsilon \\Leftrightarrow \\exists\\lim\\limits_{x \\to x_{0}} f(y(x)) = f(y_{0}). $$"
+              },
+              {
+                "name": "Об обратной функции",
+                "formulation": "Пусть $f \\in \\text{C} \\big([a, b]\\big)$ строго монотонна на $[a, b]$. Тогда $\\exists f^{-1} \\in \\text{C} \\big( [m, M]\\big)$ (где $m = \\underset{x \\in [a, b]}{min} f (x)$, а $M = \\underset{x \\in [a, b]}{max} f (x)$) и имеет характер монотонности тот же, что и у $f$.",
+                "proof": "Тот факт, что $\\exists f^{-1}$ и она имеет тот же характер монотонности, что $f$, вытекает из предыдущей леммы. $f([a, b]) = [m, M]$ следует из теоремы Больцано-Коши. Остаётся показать $f^{-1} \\in \\text{С} \\left([m, M]\\right)$. Рассмотрим случай $y_{0} \\in \\Bigl(m, M \\Bigr)$ Так как $y_{0} \\in \\Bigl(m, M \\Bigr)$, то $x_{0} \\in (a, b)$. Зафиксируем $\\epsilon > 0$ такое, что $U_{\\epsilon}(x_{0}) \\subset (a, b).$ Рассмотрим отрезок $[x_{0} - \\epsilon, x_{0} + \\epsilon] \\subset (a, b)$. На нём $f$ строго возрастает и непрерывна. Следовательно, $f$ осуществляет биекцию $[x_{0} - \\epsilon, x_{0} + \\epsilon]$ на $[f(x_{0} - \\epsilon), f(x_{0} + \\epsilon)]$ $$ \\delta(\\epsilon) = \\min \\{ f(x_{0}) - f(x_{0} - \\epsilon), f(x_{0} + \\epsilon) - f(x_{0})\\}. $$ Рассмотрим интервал $\\Bigl( f(x_{0}) - \\delta(\\epsilon), f(x_{0}) + \\delta(\\epsilon) \\Bigr) \\subset \\Bigl( f(x_{0} - \\epsilon), f(x_{0} + \\epsilon) \\Bigr) \\Rightarrow$ $$\\Rightarrow \\forall y \\in \\Bigl( f(x_{0}) - \\delta(\\epsilon), f(x_{0}) + \\delta(\\epsilon) \\Bigr) \\hookrightarrow f^{-1}(y) \\in U_{\\epsilon}(x_{0}) = U_{\\epsilon}\\Bigl(f^{-1}(y_{0})\\Bigr) $$ Следовательно, $f^{-1}$ непрерывна в точке $y_{0}$. Для концевых точек аналогично, только в них будет односторонняя непрерывность."
+              },
+              {
+                "name": "$\\sin x$ и $\\cos x$ непрерывны по всей своей области определения",
+                "formulation": "$\\sin x$ и $\\cos x$ непрерывны по всей своей области определения",
+                "proof": "В силу теоремы о композиции непрерывных функций достаточно доказать непрерывность синуса в каждой точке, так как $\\cos x = \\sin \\Bigl(x + \\cfrac{\\pi}{2} \\Bigr)$. $\\forall x_{1}, x_{2} \\in \\R$: $|\\sin x_{1} - \\sin x_{2}| = \\left|2 \\sin \\left( \\cfrac{x_{1} - x_{2}}{2} \\right) \\cos \\left( \\cfrac{x_{1} + x_{2}}{2} \\right)\\right| \\leq 2 \\left| \\sin \\left( \\cfrac{x_{1} - x_{2}}{2} \\right) \\right| \\leq 2 \\cdot \\cfrac{|x_{1} - x_{2}|}{2} = |x_{1} - x_{2}|$ Следовательно, если зафиксировать $x_{0}$, то $$ 0 \\leq |\\sin x - \\sin x_{0}| \\leq |x - x_{0}| \\to 0, x\\to x_{0}.$$ По теореме о двух милиционерах $\\lim\\limits_{x \\to x_{0}} \\sin x = \\sin x_{0}. $"
+              }
+            ]
+          }
+        },
+        {
+          "output": {
+            "definitions": [
+              {
+                "term": "Промежуток",
+                "definition": "либо отрезок, либо инвервал, либо полуинтервал, то есть $\\lfloor a, b\\rceil \\Leftrightarrow$ $[a, b]$ или $(a, b)$, или $[a, b)$, или $(a, b]$"
+              },
+              {
+                "term": "Колебание $f$ на $E$",
+                "definition": "$\\omega_{E} [f] := \\underset{x_{1}, x_{2} \\in E}{\\sup} |f (x_{1}) - f (x_{2})|$"
+              },
+              {
+                "term": "Колебание функции в точке",
+                "definition": "$\\omega_{x_{0}} [f] := \\underset{\\delta > 0}{\\inf} \\omega_{U_{\\delta} (x_{0})} [f]$"
+              },
+              {
+                "term": "Функция Римана",
+                "definition": "$$R (x) := \\begin{cases}0, \\  \\forall x \\in \\R \\backslash \\Q \\\\\\frac{1}{q}, \\  \\forall x \\in \\Q \\ (x = \\frac{p}{q}, \\ p \\in \\Z, \\ q \\in \\N, \\ (p, q) = 1)\\end{cases}$$"
+              }
+            ],
+            "theorems": [
+              {
+                "name": "Теорема о достижении минимума/максимума полунепрерывной функции",
+                "formulation": "Пусть $K$~---~компакт, $K \\neq \\varnothing$. Пусть $f$: $K \\mapsto R$. Если $f$~---~полунепрерывна снизу на компакте, то она достигает своего минимума, а если полунепрерывна сверху, то~---~максимума.",
+                "proof": "Докажем для полунепрерывности сверху, так как для полунепрерывности снизу доказательство аналогично. Пусть $f (K) := \\{ f (x)$: $x \\in K\\} \\subset \\R$. Тогда $\\exists \\sup f (K) = M.$ Пока знаем, что $M \\in \\overline{\\R}$. Из утверждения 4.2 получаем: $\\forall n \\in \\N \\  \\exists y_{n} \\in f (K)$: $y_{n} \\in U_{\\frac{1}{n}} (M)$. Но тогда $\\forall n \\in \\N \\  \\exists x_{n} \\in K$: $f (x_{n}) \\in U_{\\frac{1}{n}} (M) \\Rightarrow$ построили последовательность точек $\\{ x_{n} \\} \\subset K$: $f (x_{n}) \\to M, \\ n \\to \\infty$. Так как $K$~---~компакт, то существует подпоследовательность $\\{ x_{n_{j}} \\}$ последовательности $\\{ x_{n} \\}$ и точка $x^{*} \\in K$: $x_{n_{j}} \\to x^{*}, j \\to \\infty$. Но $f$~---~полунепрерывна сверху в точке $x^{*} \\Rightarrow \\overline{\\lim\\limits_{j\\to \\infty}} f (x_{n_{j}}) \\leq \\overline{\\lim\\limits_{\\underset{x \\in K}{x\\to x^{*}}}} f (x) \\leq f (x^{*})$. Но на самом деле $\\overline{\\lim\\limits_{j\\to \\infty}} f (x_{n_{j}}) = \\lim\\limits_{j\\to \\infty} f (x_{n_{j}}) = M.$ А тогда $f (x^{*}) \\geq M$, но $f (x^{*}) \\in f (K) \\Rightarrow f (x^{*}) \\leq M.$ Итого получаем, $f (x^{*}) = M$. То есть она достигает максимума."
+              },
+              {
+                "name": "Теорема Больцано-Коши/о промежуточном значении",
+                "formulation": "Пусть $a < b$. Пусть $f \\in \\text{C} ([a, b])$. Тогда $\\forall y^{*} \\in [min\\big[f (a), f (b)\\big], max\\big[f (a), f (b)\\big]]\\  \\exists x^{*} \\in [a, b]$: $f (x^{*}) = y^{*}.$",
+                "proof": "Для удобства доказательства положим $f (a) < f (b)$, в противном случае доказательство не изменится с точностью до знаков. Пусть $[a, b] = I^{0}$. Поделим $I^{0}$ пополам, то есть рассмотрим $c_{1} = \\frac{a + b}{2}$. Возможно 2 варианта: $\\left[\\begin{gathered}y^{*} \\in [f (c_{1}), f (b)];\\\\y^{*} \\in [f (a), f (c_{1})].\\end{gathered}\\right.$ Выберем такую половину $I^{0}$, что $y^{*}$ принадлежит отрезку, образованному значениями $f$ в концах половинок, назовём его $I^{1}$. Такой отрезок обязательно найдётся, иначе мы бы пришли к противоречию с тем, что $y^{*} \\in I^{0}$. Пусть построено $k + 1$ отрезков: $I^{0} \\supset I^{1} \\supset \\ldots \\supset I^{k}$. $I^{k} = [a_{k}, b_{k}]$, при этом $y^{*} \\in [a_{j}, b_{j}] \\  \\forall j \\in \\{0, 1, \\ldots, k\\}$. $|I^{j}| = \\frac{|b - a|}{2^{j}} \\  \\forall j \\in \\{ 0, 1, \\ldots, k\\}$. На $k + 1$ шаге делим $I^{k}$ пополам. Пусть $c_{k + 1} = \\frac{a_{k} + b_{k}}{2}$. Возможно 2 случая: $\\left[\\begin{gathered}y^{*} \\in [f (c_{k + 1}), f (b_{k})];\\\\y^{*} \\in [f (a_{k}), f (c_{k + 1})].\\end{gathered}\\right.$ Обязательно найдётся половина, для которой $y^{*}$ будет принадлежать отрезку, образованному значениями функции в концах этой половины, иначе $y^{*} \\notin [a_{k}, b_{k}]$, что противоречит построению. По индукции мы построили стягивающуюся последовательность вложенных отрезков $\\displaystyle \\{ I^{k} \\}^{\\infty}_{k = 1} \\Rightarrow \\exists ! x^{*} = \\bigcap^{\\infty}_{k = 1} I^{k}$. По построению $\\forall k \\in \\N \\  y^{*} \\in [f (a_{k}), f (b_{k})]$. Но $f$ непрерывна в точке $x^{*}$, то есть $a_{k}\\to x^{*}, \\ k \\to \\infty$ и $b_{k}\\to x^{*}, \\  k \\to \\infty \\Rightarrow f (a_{k})\\to f(x^{*}), \\ k \\to \\infty$ и $f (b_{k})\\to f(x^{*}), \\  k \\to \\infty.$ Тогда по теореме о двух миллиционерах и так как $y^{*}$~---~стационарная последовательность, то $y^{*} = f (x^{*})$."
+              },
+              {
+                "name": "Обобщённая теорема о промежуточном значении",
+                "formulation": "Пусть $f$: $\\lfloor a, b\\rceil \\mapsto \\R$. Пусть $f \\in \\text{C} \\big(\\lfloor a, b\\rceil \\big)$. Пусть $m = \\underset{x \\in \\lfloor a, b\\rceil}{\\inf} f (x)$, $M = \\underset{x \\in \\lfloor a, b\\rceil}{\\sup} f (x)$. Тогда $\\forall y^{*} \\in (m, M) \\  \\exists x^{*} \\in \\lfloor a, b\\rceil$: $f (x^{*}) = y^{*}$.",
+                "proof": "По определению инфимума $\\exists a_{1} \\in \\lfloor a, b\\rceil$: $m \\leq f (a_{1}) < y^{*}$. Аналогично по определению супремума $\\exists b_{1} \\in \\lfloor a, b\\rceil$: $M \\geq f (b_{1}) > y^{*}.$ Следовательно $y^{*} \\in [f (a_{1}), f (b_{1})]$. И при этом $f \\in \\text{C} \\big( [a_{1}, b_{1} ]\\big) \\Rightarrow$ по теореме Больцано-Коши $\\exists x^{*} \\in [a_{1}, b_{1}]$: $f (x^{*}) = y^{*}$, что и требовалось."
+              },
+              {
+                "name": "Теорема о критерие непрерывности в точке через колебания",
+                "formulation": "Функция непрерывна в точке по множеству $\\Leftrightarrow$ колебание в ней 0. То есть пусть $X \\subset \\R$, $X \\neq \\varnothing$, $x_{0} \\in X$, $f$~---~непрерывна в точке $x_{0}$ по множеству $X \\Leftrightarrow \\omega_{x_{0}} [f] = 0.$",
+                "proof": "Шаг 1. Пусть $f$ непрерывна в точке $x_{0} \\Rightarrow \\forall \\epsilon > 0 \\  \\exists \\delta (\\epsilon) > 0$: $\\forall x \\in U_{\\delta} (x_{0}) \\cap X \\hookrightarrow |f (x) - f (x_{0})| < \\frac{\\epsilon}{2}$. Тогда $\\forall \\epsilon > 0 \\  \\exists \\delta (\\epsilon) > 0$: $\\forall x_{1}, x_{2} \\in U_{\\delta} (x_{0} \\cap X \\hookrightarrow |f (x_{1}) - f (x_{2})| < \\epsilon$ по неравенству треугольника. Получается $\\forall \\epsilon > 0 \\  \\exists \\delta (\\epsilon)$: $\\omega_{U_{\\delta (\\epsilon)} (x_{0}) \\cap X} [f] \\leq \\epsilon$, но так как есть монотонность по $\\delta$, то $\\exists \\lim\\limits_{\\delta\\to +0} \\omega_{U_{\\delta (\\epsilon)} (x_{0}) \\cap X} [f] = 0 = \\underset{\\delta > 0}{\\inf} \\omega_{U_{\\delta (\\epsilon)} (x_{0}) \\cap X} [f]$ по теореме Вейерштрасса. В одну сторону доказали. Шаг 2. Пусть $\\omega_{x_{0}} [f] = 0$. Покажем непрерывность. В силу монотонности $\\omega_{U_{\\delta (\\epsilon)} (x_{0}) \\cap X} [f]$ по $\\delta$ получаем, что $\\exists \\lim\\limits_{\\delta\\to +0} \\omega_{U_{\\delta (\\epsilon)} (x_{0}) \\cap X} [f] = 0$. Тогда по определению получаем: $$\\forall \\epsilon > 0 \\  \\exists \\delta (\\epsilon) > 0: \\forall \\delta \\in \\big(0, \\delta (\\epsilon)\\big] \\hookrightarrow \\omega_{U_{\\delta (\\epsilon)} (x_{0}) \\cap X} [f] < \\epsilon.$$ Тогда, взяв $x_{1} = x_{0}$, а $\\delta = \\delta (\\epsilon)$, получим $$\\forall \\epsilon > 0 \\  \\exists \\delta (\\epsilon) > 0: \\underset{x_{2} \\in U_{\\delta (\\epsilon)} (x_{0}) \\cap X}{\\sup} |f (x_{2}) - f (x_{0})| < \\epsilon \\Rightarrow f$~---~непрерывна в точке } x_{0}.$"
+              },
+              {
+                "name": "Теорема о замене переменной под знаком предела",
+                "formulation": "Пусть $x_{0}, y_{0} \\in \\overline{\\R}$. Пусть $y$: $\\mathring{U}_{\\delta_{0}} (x_{0}) \\mapsto \\R$, $f$: $\\mathring{U}_{\\delta_{0}} (y_{0}) \\mapsto \\R$. Пусть $\\exists \\lim\\limits_{y\\to y_{0}} f (y) = A$, $A \\in \\Hat{\\R}$ и $y (x) \\neq y_{0} \\  \\forall x \\in \\mathring{U}_{\\delta_{0}} (x_{0}).$ Тогда $\\exists \\lim\\limits_{x\\to x_{0}} f (y (x)) = A.$",
+                "proof": "Зафиксируем произвольное $\\epsilon > 0$. Так как $\\lim_{y \\to y_{0}} f (y) = A$, то $$\\exists \\beta \\in (0; \\beta_{0}): \\forall y \\in \\ring{U}_{\\beta} (y_{0}) \\hookrightarrow f (y) \\in U_{\\epsilon} (A).$$ По определению предела"
+              }
+            ]
+          }
+        },
+        {
+          "output": {
+            "definitions": [
+              {
+                "term": "Корень n-ой степени",
+                "definition": "$f^{-1}(x^{n}) := \\sqrt[n]{x}$"
+              },
+              {
+                "term": "Пусть $m \\in \\N$, $n \\in \\N$, $\\cfrac{m}{n}$~---~ несократимая дробь",
+                "definition": "$$f(x) = x^{\\frac{m}{n}} := \\big(\\sqrt[n]{x}\\big)^{m}, \\quad x\\in [0,+\\infty).$$"
+              },
+              {
+                "term": " $x^{-\\frac{m}{n}}$",
+                "definition": "$:= \\cfrac{1}{\\big(\\sqrt[n]{x}\\big)^{m}}, \\quad x\\in (0,+\\infty).$"
+              }
+            ],
+            "theorems": [
+              {
+                "name": "Неравенство Бернулли",
+                "formulation": "$$\\left( 1 + x \\right)^{n} \\geq 1 + nx, \\quad \\forall x \\geq -1, \\quad \\forall n \\in \\N$$",
+                "proof": "Будем доказывать по индукции: При $n = 1$ верно.Предположим, что доказали при $n = k \\in \\N.$ Покажем, что для $n = k + 1$ верно.$$ \\left( 1 + x \\right)^{k+1} = \\left( 1+x \\right)\\left(1 + x\\right)^{k} \\geq (1 + x)(1 + kx) = 1 + (k+1) x + kx^{2} \\geq 1 + (k+1)x,\\ \\textrm{так как} \\  kx^{2} \\geq 0.$$Следовательно, по индукции верно для всех $n \\in \\N$."
+              },
+              {
+                "name": "Теорема",
+                "formulation": "Последовательность: $$ x_{n} = \\left( 1 + \\cfrac{1}{n}\\right)^{n+1} \\quad n \\in \\N$$ ограничена снизу и монотонно не возрастает.",
+                "proof": "$$ \\left( 1 +\\cfrac{1}{n} \\right)^{n+1} \\geq 1 \\quad \\forall n \\in \\N$$Значит, она ограничена снизу.Докажем монотонное невозрастание (нестрогое убывание) для $n \\geq 2$:$$ \\cfrac{x_{n-1}}{x_{n}} = \\cfrac{\\left( 1 + \\cfrac{1}{n-1}\\right)^{n}}{\\left( 1 + \\cfrac{1}{n}\\right)^{n+1}} = \\left(\\cfrac{n}{n-1}\\right)^{n} \\cdot \\left(\\cfrac{n}{n+1} \\right)^{n+1} = \\cfrac{n-1}{n} \\cdot \\left(\\cfrac{n}{n-1}\\right)^{n+1} \\cdot \\left(\\cfrac{n}{n+1} \\right)^{n+1}  =$$ $$\\cfrac{n-1}{n} \\cdot \\left(\\cfrac{n^{2}}{n^{2}-1}\\right)^{n+1} = \\cfrac{n-1}{n} \\cdot \\left( 1 + \\cfrac{1}{n^{2}-1}\\right)^{n+1} \\geq \\left(1+ \\cfrac{n+1}{(n+1)(n-1)}\\right) \\cdot \\cfrac{n-1}{n} = 1$$По неравенству Бернулли для $x = \\cfrac{1}{n^2 - 1}$.$$\\text{Итого получаем: }\\  \\forall n \\geq 2 \\quad \\cfrac{x_{n-1}}{x_{n}} \\geq 1.$$Следовательно, последовательность нестрого убывает."
+              },
+              {
+                "name": "Теорема-определение",
+                "formulation": "$\\exists \\lim\\limits_{n \\to \\infty} \\left( 1 + \\cfrac{1}{n} \\right)^{n} \\geq 2 $и это число называется \\textit{<<числом $e$>>}.",
+                "proof": "$$ \\left( 1 + \\cfrac{1}{n} \\right)^{n} \\geq 2 \\quad \\forall n \\in \\N \\ \\textrm{из неравенства Бернулли.}$$В силу предыдущей теоремы и \\hyperlink{thm2.6}{теоремы Вейерштрасса о монотонной последовательности} $$\\exists \\lim\\limits_{n \\to \\infty} \\left( 1 + \\cfrac{1}{n}\\right)^{n+1} = \\inf \\left\\{ \\left( 1 + \\cfrac{1}{n}\\right)^{n+1}: n \\in \\N \\right\\} \\in \\R$$$$\\left( 1 + \\cfrac{1}{n} \\right)^{n} = \\cfrac{\\left( 1 + \\cfrac{1}{n} \\right)^{n+1}}{1 + \\cfrac{1}{n}} \\Rightarrow \\exists \\lim\\limits_{n \\to \\infty} \\left( 1 + \\cfrac{1}{n} \\right)^{n} = \\cfrac{\\lim\\limits_{n \\to \\infty} \\left( 1 + \\cfrac{1}{n}\\right)^{n+1}}{\\lim\\limits_{n \\to \\infty} \\left(1 + \\cfrac{1}{n}\\right)}=\\lim\\limits_{n \\to \\infty} \\left( 1 + \\cfrac{1}{n}\\right)^{n+1} $$Переходя к пределу в неравенстве:$$\\left( 1 + \\cfrac{1}{n} \\right)^{n} \\geq 2. $$ $ \\left( 1 + \\cfrac{1}{n} \\right)^{n} \\to e,\\  n \\to \\infty$ и $2 \\to 2, \\ n\\to \\infty,$ откуда получаем $ e \\geq 2.$"
+              },
+              {
+                "name": "Лемма",
+                "formulation": "$\\forall n \\in \\N $ функция $f(x) = x^{n}$ непрерывна на $\\R$. Кроме того, $f\\left( [0, +\\infty) \\right) = [0, +\\infty) \\quad (*)$",
+                "proof": "Непрерывность следует по индукции из непрерывности произведения непрерывных функций.Докажем $(*)$. Так как $x \\geq 0$, то, очевидно, $f\\left( [0, +\\infty) \\right) \\subset [0, +\\infty)$.Из $f \\in C \\big( [0,+\\infty) \\big)$ и \\hyperlink{thm5.4}{ теоремы о промежуточном значении}:$$ \\left( \\inf\\limits_{x \\in [0, +\\infty)} f(x), \\sup\\limits_{x \\in [0, +\\infty)} f(x) \\right) \\subset f\\left([0, +\\infty)\\right)$$$$\n    \\begin{gathered}\n    \\inf\\limits_{x \\in [0, +\\infty)} x^{n} = 0 \\\\\n    \\sup\\limits_{x \\in [0, +\\infty)} x^{n} = + \\infty\n    \\end{gathered}\n    \\Rightarrow (0, + \\infty) \\subset f \\left( [0, +\\infty) \\right)$$Но кроме того $f(0) = 0$, следовательно:$$[0, + \\infty) \\subset f \\left( [0, +\\infty) \\right)$$Из $f ([0, +\\infty)) \\subset [0, +\\infty)$ и $[0, +\\infty) \\subset f ([0, +\\infty))$ следует, что $f ([0, +\\infty)) = [0, +\\infty)$."
+              },
+              {
+                "name": "Лемма",
+                "formulation": "$\\forall n\\in \\N \\ f(x) = x^{n}$ строго возрастает на луче $[0, +\\infty)$",
+                "proof": "Из только что доказанного следует определяет существование$ \\ \\exists \\  f^{-1}: [0, +\\infty) \\mapsto [0, +\\infty)$, обратной к $f(x) = x^{n}$."
+              },
+              {
+                "name": "Лемма (Неравенство Бернулли 2)",
+                "formulation": "Пусть $a > 1,\\ |r| \\leq 1$, $r \\in \\Q.$ Тогда$$|a^{r} - 1| \\leq 2|r| \\cdot(a-1) \\quad (*)$$",
+                "proof": "Сначала докажем для $r = \\cfrac{1}{n}$. Поскольку $a > 1$, то $a^{\\frac{1}{n}} = 1 + \\alpha, \\ \\alpha > 0.$$$a= (1 + \\alpha)^{n} \\geq 1 + n\\cdot \\alpha \\Rightarrow \\alpha \\leq \\left(\\cfrac{a-1}{n}\\right), \\text{ значит при $r = \\cfrac{1}{n} \\ $ $(*)$ выполняется.}$Пусть $r \\in (0,1]$. Следовательно,$\\displaystyle \\exists! \\ n \\in \\N: \\ r \\in \\left(\\cfrac{1}{n+1}, \\ \\cfrac{1}{n}\\right]$. И $2 r \\geq \\cfrac{1}{n}$.$$\n\\displaystyle a^{r} - 1 \\leq a^{\\frac{1}{n}} - 1 \\leq \\cfrac{1}{n} \\cdot(a-1) \\leq 2r \\cdot(a-1), \\text{ получается при $r \\in (0,1]$ доказали.}$$$\nДля $r = 0$ очевидно. \nРассмотрим случай $r \\in [-1, 0).$ Тогда $a^{r} = a^{-|r|} = \\cfrac{1}{a^{|r|}}.$$$\n    \n|a^{r}-1| = 1-\\cfrac{1}{a^{|r|}} = \\cfrac{1}{a^{|r|}}\\cdot (a^{|r|} - 1) \\leq \\cfrac{2|r| \\cdot (a-1)}{a^{|r|}} \\leq 2|r| \\cdot(a-1)$$"
+              },
+              {
+                "name": "Теорема-определение",
+                "formulation": "Пусть $a > 0, \\ x\\in \\R$. Тогда $\\forall \\{r_{n}\\}_{n = 1}^{\\infty} \\subset \\Q$: $\\lim\\limits_{n \\to \\infty} r_{n} = x.$$$\\exists \\lim\\limits_{n \\to \\infty} a^{r_{n}} =: a^{x} $$и этот предел не зависит от выбора последовательности $\\{r_{n}\\}$.",
+                "proof": "Рассмотрим случай $a > 1$. Зафиксируем $x \\in \\R$ и произвольную последовательность $\\{r_{n}\\} \\subset \\Q$: $\\lim\\limits_{n \\to \\infty} r_{n} = x$.Так как сходящаяся последовательность ограничена, то $$\\exists M \\in \\N: |r_{n}| \\leq M \\Rightarrow \\cfrac{1}{a^{M}} \\leq a^{r_{n}} \\leq a^{M} \\quad \\forall n \\in \\N.$$Пусть $n, m \\in \\N$.$$|a^{r_{n}} - a^{r_{m}}| = a^{r_{m}} \\cdot |a^{r_{n} - r_{m}} - 1| \\leq a^{M}\\cdot |a^{r_{n} - r_{m}} - 1|.$$Так как $\\{r_{n}\\}$~---~сходящаяся последовательность, то она фундаментальна. Значит, $$\\forall \\epsilon > 0 \\ \\exists N(\\epsilon) \\in \\N:\\ \\forall n, m \\geq N(\\epsilon) \\hookrightarrow |r_{n} - r_{m}| < \\epsilon  \\Rightarrow$$$$\\begin{gathered}\\Rightarrow \\textrm{при} \\ n, m \\geq N(1) \\hookrightarrow |r_{n} - r_{m}| < 1 \\Rightarrow\\hfill \\\\\\Rightarrow \\textrm{при} \\ n, m \\geq N(1) \\hookrightarrow |a^{r_{n}} - a^{r_{m}}| \\leq 2a^{M} |r_{n} - r_{m}| \\cdot (a-1) \\end{gathered}$$$$\n    \\forall \\epsilon > 0 \\ \\exists \\Tilde{N}(\\epsilon) = N \\left(\\cfrac{\\epsilon}{2a^{M}\\cdot (a-1)}\\right): \\forall n, m \\geq \\Tilde{N}(\\epsilon) \\hookrightarrow |a^{r_{n}} - a^{r_{m}}| \\leq \\cfrac{\\epsilon \\cdot 2a^{M}\\cdot (a-1)}{2a^{M}\\cdot (a-1)} = \\epsilon$$Следовательно, $\\{a^{r_{n}}\\}$ фундаментальна. Значит, по критерию коши:$$\\exists \\lim\\limits_{n \\to \\infty} a^{r_{n}} = a^{x}.$$Проверим корректность, то есть независимость от выбора последовательности $\\{r_{n}\\}$.Пусть $\\lim\\limits_{n \\to \\infty} r_{n}' = x$ и $\\lim\\limits_{n \\to \\infty} r_{n}'' = x$.$$\\exists \\Tilde{N} \\in \\N: \\  \\forall n \\geq \\Tilde{N} \\hookrightarrow |r_{n}' - r_{n}''| \\leq 1 \\Rightarrow$$$$ \\Rightarrow \\forall n \\geq \\Tilde{N}: \\ |a^{r_{n}'} - a^{r_{n}''}| = a^{r_{n}'} \\cdot |a^{r_{n}'' - r_{n}'} - 1| \\leq 2a^{r_{n}'} \\cdot |r_{n}' - r_{n}''| \\cdot (a-1)$$Так как $\\{a^{r_{n}'}\\}\\limits_{n = 1}^{\\infty}$~---~сходящаяся последовательность, то она ограничена, значит$$\\exists C> 0: \\ a^{r_{n}'} \\leq C \\quad \\forall n \\in \\N \\Rightarrow 0 \\leq |a^{r_{n}'} - a^{r_{n}''}| \\leq 2C \\cdot (a-1) \\cdot |r_{n}' - r_{n}''| \\to 0, n \\to \\infty$$По \\hyperlink{thm2.4}{теореме о двух миллиционерах}: $$\\lim\\limits_{n \\to \\infty} a^{r_{n}'} = \\lim\\limits_{n \\to \\infty} a^{r_{n}''} = a^{x}.$$Случай $a = 1$ тривиален.Случай $a \\in (0, 1)$ сводится к только что рассмотренному, если учесть, что $$\\displaystyle a^{r} = \\left(\\cfrac{1}{\\frac{1}{a}}\\right)^r, \\quad \\cfrac{1}{a} > 1.$$"
+              },
+              {
+                "name": "Лемма",
+                "formulation": "$\\hyperlink{thmdef4.2}{Новое определение} совпадает с \\hyperlink{def4.33}{предыдущим} при $x \\in \\Q.$",
+                "proof": "При $x \\in \\Q$ рассмотрим стационарную последовательность $\\displaystyle \\{r_{n}\\}_{n = 1}^{\\infty} = x.$Тогда по \\hyperlink{thmdef4.2}{новому определению} $a^x = \\lim\\limits_{n \\to \\infty} a^{r_{n}}$ для любой последовательности $\\{r_{n}\\}$, сходящейся к $x$, в частности и для последовательности  $\\{r_{n}\\} = x$.Но тогда $a^x = \\lim\\limits_{n \\to \\infty} a^{r_{n}}$ по \\hyperlink{def4.33}{старому определению}."
+              },
+              {
+                "name": "Теорема",
+                "formulation": "Пусть $a > 0$. Функция $f(x) = a^{x}$ непрерывна в каждой точке числовой прямой.",
+                "proof": "Пусть $a > 1$.Фиксируем точку $x_{0} \\in \\R$.Тогда по неравенству Бернулли:$$\\forall x \\in U_{1}(x_{0}) \\hookrightarrow |a^{x} - a^{x_{0}}| = a^{x_{0}}\\cdot|a^{x-x_{0}} - 1| \\leq 2 a^{x_{0}} \\cdot |x - x_{0}| \\cdot (a-1)$$$$0 \\leq |a^{x} - a^{x_{0}}| \\leq 2 a^{x_{0}} \\cdot |x - x_{0}| \\to 0, x \\to x_{0} \\Rightarrow a^{x} \\to a_{x_{0}}\\cdot (a-1), x \\to x_{0}$$Следовательно, $a^{x}$ непрерывна в точке $x_{0}$. Но $x_{0}$ была выбрана произвольно. При $a > 1$ доказано. Случай $a = 1$ тривиален, так как $1 = 1^{r} \\quad \\forall r \\in \\Q \\Rightarrow 1^{x} = 1  \\quad \\forall x \\in \\R$.Случай $a \\in (0, 1)$ сводится к только что рассмотренному, если учесть, что $$a^{r} = \\left(\\cfrac{1}{\\frac{1}{a}}\\right)^r, \\quad \\cfrac{1}{a} > 1.$$"
+              }
+            ]
+          }
+        },
+        {
+          "error": "Failed to parse tool arguments from chat model response. Text: \"[]\". SyntaxError: Unexpected non-whitespace character after JSON at position 13397 (line 1 column 13398)\n\nTroubleshooting URL: https://js.langchain.com/docs/troubleshooting/errors/OUTPUT_PARSING_FAILURE/\n"
+        },
+        {
+          "output": {
+            "definitions": [
+              {
+                "term": "Неявно заданная функция",
+                "definition": "Функция $y: X \\mapsto \\R$ называется неявно заданной уравнением $F(x, y) = 0$, если $F(x, y(x)) = 0 \\quad \\forall x \\in X$"
+              },
+              {
+                "term": "Точка локального экстремума",
+                "definition": "Точка $x_{0}$ называется точкой локального максимума (локального минимума) функции $f$, если $\\exists \\delta = \\delta (x_{0}) > 0: \\begin{gathered} f(x) \\leq f(x_{0}) \\ \\forall x \\in U_{\\delta}(x_{0}) \\cap X\\\\ ( f(x) \\geq f(x_{0}) \\ \\forall x \\in U_{\\delta}(x_{0}) \\cap X)\\end{gathered}$"
+              },
+              {
+                "term": "Точка строгого локального экстремума",
+                "definition": "Точка $x_{0}$ называется точкой строгого локального максимума (строгого локального минимума) функции $f$, если $\\exists \\delta = \\delta (x_{0}) > 0: \\begin{gathered} f(x) < f(x_{0}) \\ \\forall x \\in \\mathring{U}_{\\delta}(x_{0}) \\cap X\\\\ ( f(x) > f(x_{0}) \\ \\forall x \\in \\mathring{U}_{\\delta}(x_{0}) \\cap X)\\end{gathered}$"
+              },
+              {
+                "term": "Полином Тейлора",
+                "definition": "Полиномом (многочленом) Тейлора функции $f$ с центром в точке $x_{0}$ называется $T_{x_{0}}^{n} [f](x) := \\sum\\limits_{k = 0}^n \\cfrac{f^{(k)}(x_{0})}{k!}(x-x_{0})^{k}$"
+              },
+              {
+                "term": "Формальный n-ый остаточный член формулы Тейлора",
+                "definition": "Формальным n-ым остаточным членом формулы Тейлора функции $f$ с центром в точке $x_{0}$ называется $r_{x_{0}}^{n} [f](x):= f(x) -T_{x_{0}}^{n} [f](x),\\ x\\in U_{\\delta_{0}}(x_{0}) $"
+              }
+            ],
+            "theorems": [
+              {
+                "name": "Инвариантность формы первого дифференциала и неинвариантность формы высших дифференциалов",
+                "formulation": "Пусть функция $y = y(x)$ дифференцируема в точке $x_{0},$ а функция $z = z(y)$ дифференцируема в точке $y_{0} = y(x_{0})$. Тогда дифференциал $z,$ рассматриваемый как функция лишь от $y$ в точке $y_{0},$  и дифференциал функции $z= z(y(x)) = f(x)$ в точке $x_{0}$ записываются одинаково, а именно $dz = z'(y_{0}) \\ dy$. При этом в первом случае (когда $z=z(y)$) $dy = y-y_{0}$, а во втором $dy$~---~дифференциал функции $y(x)$ в точке $x_{0}$",
+                "proof": "Для функции $z = z(y)$ по определению дифференциала $dz(y_{0}) = z'(y_{0}) \\ dy, \\ dy = y-y_{0}$. Рассмотрим композицию функций $z = z(y(x)) = f(x)$. $dz = f'(x_{0}) \\ dx = z'(y(x_{0})) \\ y'(x_{0}) \\ dx = z'(y(x_{0})) \\ dy(x_{0})$"
+              },
+              {
+                "name": "Формула Лейбница",
+                "formulation": "Пусть $\\exists u^{(n)}(x_{0}) \\in \\R $ и $\\exists v^{(n)}(x_{0}) \\in \\R$. Тогда $\\exists (u\\cdot v)^{n} = \\sum\\limits_{k=0}^{n} \\relax C_{n}^{k} u^{(k)}(x_{0}) \\cdot v^{(n-k)}(x_{0})$",
+                "proof": "Будем доказывать по индукции. База: при $n =1 $ верно (обычное правило дифференцирование произведения). Пусть доказано при некотором $n = k \\in \\N,$ установим при $k + 1$. При $k$ имеем: $(u \\cdot v)^{(k)} = \\sum\\limits_{s=0}^{k} \\relax C_{k}^{s} u^{(s)}(x_{0}) \\cdot v^{(k-s)}(x_{0})$. $(u \\cdot v)^{(k+1)} = \\Bigg(\\sum\\limits_{s=0}^{k} \\relax C_{k}^{s} u^{(s)}(x) \\cdot v^{(k-s)}(x) \\Bigg)' \\Bigg|_{x=x_{0}} = \\sum\\limits_{s=0}^{k} \\relax C_{k}^{s} u^{(s+1)}(x_{0}) \\cdot v^{(k-s)}(x_{0}) + \\sum\\limits_{s=0}^{k} \\relax C_{k}^{s} u^{(s)}(x_{0}) \\cdot v^{(k-s + 1)}(x_{0}) = (*)$. Произведем замену индексов: $ s + 1 = j, \\ s+ j - 1$. Получаем $(*) = \\sum\\limits_{j=1}^{k+1} \\relax C_{k}^{j-1} u^{(j)}(x_{0}) \\cdot v^{(k-j + 1)}(x_{0}) + \\sum\\limits_{j=0}^{k} \\relax C_{k}^{j} u^{(j)}(x_{0}) \\cdot v^{(k-j + 1)}(x_{0}) = \\relax C_{k}^{k} u^{(k+1)}(x_{0}) \\cdot v(x_{0}) + \\relax C_{k}^{0} u(x_{0}) \\cdot v^{(k+ 1)}(x_{0}) + \\sum\\limits_{j=1}^{k} \\Bigl(\\relax C_{k}^{j-1} + \\relax C_{k}^{j} \\Bigr) u^{(j)}(x_{0}) \\cdot v^{(k+1 -j)}(x_{0}) = \\sum\\limits_{j=0}^{k+1} \\relax C_{k+1}^{j} u^{(j)}(x_{0}) \\cdot v^{(k+1-j)}(x_{0})$. Шаг индукции доказан. Значит, формула верна при всех $n \\in \\N.$"
+              },
+              {
+                "name": "Лемма",
+                "formulation": "Пусть $f: [a, b] \\mapsto \\R$. Пусть $x_{0}$~---~ точка локального минимума (локального максимума). Тогда, если $ \\begin{gathered} \\exists f'_{+} (x_{0}), \\textrm{то} \\ f'_{+} (x_{0}) \\geq 0 \\\\ \\exists f'_{-} (x_{0}), \\textrm{то} \\ f'_{-} (x_{0}) \\leq 0 \\\\ \\left( \\begin{gathered} \\exists f'_{+} (x_{0}), \\textrm{то} \\ f'_{+} (x_{0}) \\leq 0 \\\\ \\exists f'_{-} (x_{0}), \\textrm{то} \\ f'_{-} (x_{0}) \\geq 0 \\end{gathered} \\right) \\end{gathered}$",
+                "proof": "Докажем для случая, когда $x_{0}$~---~ точка локального минимума, так как для локального максимума доказательство аналогично. Пусь $ \\exists f'_{+}(x_{0}) \\Rightarrow \\exists \\lim\\limits_{x\\to x_{0}+0} \\cfrac{f(x)-f(x_{0})}{x - x_{0}}$. Так как $x_{0}$~---~ локальный минимум, то $\\exists \\delta > 0: \\ f(x)\\geq f(x_{0}) \\quad \\forall x\\in U_{\\delta}(x_{0}) \\cap [a,b]$. А так как берется правосторонний предел, то $x>x_{0}$. Следовательно, $\\forall x \\in \\mathring{U}^{+}_{\\delta} (x_{0}) \\cap [a, b] \\hookrightarrow \\cfrac{f(x)-f(x_{0})}{x-x_{0}} \\geq 0 $. Следовательно, делая предельный переход в неравенстве, получим $f'_{+} \\geq 0$. Если $\\exists f'_{-}(x_{0}) := \\lim\\limits_{x\\to x_{0}-0} \\cfrac{f(x)-f(x_{0})}{x-x_{0}}$, то $ \\exists \\delta > 0 (\\text{та же самая}): \\ f(x) \\geq f(x_{0}) \\quad \\forall x\\in U_{\\delta}(x_{0})$. Так как $x$ приближается к $x_{0}$ слева, то $x-x_{0} \\leq 0$. Следовательно, $\\forall x \\in \\mathring{U}^{-}_{\\delta} (x_{0}) \\cap [a, b] \\hookrightarrow \\cfrac{f(x)-f(x_{0})}{x-x_{0}} \\leq 0$. Следовательно, делая предельный переход в неравенстве, получим $f'_{-} \\leq 0$"
+              },
+              {
+                "name": "Теорема Ферма",
+                "formulation": "Пусть $f$: $U_{\\delta}(x_{0}) \\mapsto \\R$ дифференцируема в точке $x_{0}$. Тогда если $x_{0}$~---~локальный экстремум $f$, $f'(x_{0}) = 0$",
+                "proof": "В силу предыдущей леммы $ \\begin{cases} f'_{+}(x_{0}) \\geq 0 \\\\ f'_{-}(x_{0}) \\leq 0, \\end{cases}$ если $x_{0}$~---~ локальный минимум. Следовательно, $\\exists f'(x_{0}) \\in \\R \\Leftrightarrow \\begin{cases} \\exists f'_{+}(x_{0}) \\in \\R \\\\ \\exists f'_{-}(x_{0}) \\in \\R \\end{cases}$ и $f'_{+}(x_{0}) = f'_{-}(x_{0}) \\Rightarrow f'(x_{0}) = 0.$ Доказательство для локального максимума аналогично"
+              },
+              {
+                "name": "Теорема Ролля (о среднем)",
+                "formulation": "Пусть $f \\in C([a,b])$, дифференцируема на интервале и $f (a) = f (b)$. Тогда $\\exists \\xi \\in (a, b)$: $f'(\\xi) = 0$",
+                "proof": "Возможны два случая: $\\underline{\\textrm{Случай 1.}}$ $f \\equiv const. \\ f'(x) = 0 \\quad \\forall x\\in (a, b)$. Значит, в качестве $\\xi$ можно взять любую точку из $(a, b)$. $\\underline{\\textrm{Случай 2.}}$ Если $f \\neq const,$ то в силу непрерывности $f$ достигает наибольшего и наименьшего значения на $[a, b].$ Следовательно, существует точка локального экстремума $\\xi \\in [a,b]$ (в котором достигается либо локальный максимум, либо локальный минимум). Значит, так как $f$ дифференцируема на интервале $(a, b)$, по теореме Ферма $f'(\\xi) = 0$"
+              },
+              {
+                "name": "Теорема Коши о среднем",
+                "formulation": "Пусть $f, g \\in C([a, b])$ и дифференцируема на интервале $(a, b)$. Пусть $g'(x) \\neq 0 \\quad \\forall x \\in (a, b)$. Тогда $\\exists \\xi \\in (a, b): \\ \\cfrac{f(b)-f(a)}{g(b)-g(a)}= \\cfrac{f'(\\xi)}{g'(\\xi)}$",
+                "proof": "Так как $g'(x) \\neq 0 \\quad \\forall x \\in [a, b],$ то $g(a) \\neq g(b)$. Иначе получили противоречие теореме Ролля. Следовательно, формула корректна. Рассмотрим функцию $h(x) = f(x) - k \\cdot g(x), \\textrm{при }\\ k =\\cfrac{f(b)-f(a)}{g(b)-g(a)}.$ Заметим, что $h(b) =h(a)$. Так как $h \\in C([a,b])$ и дифференцируема на интервале $(a, b)$, то по теореме Ролля $\\exists \\xi \\in (a, b): h'(\\xi) = 0$. $ h'(\\xi) = f'(\\xi) - k g'(\\xi) = 0 \\Rightarrow k = \\cfrac{f'(\\xi)}{g'(\\xi)} \\Rightarrow \\cfrac{f(b)-f(a)}{g(b)-g(a)}= \\cfrac{f'(\\xi)}{g'(\\xi)}$"
+              },
+              {
+                "name": "Теорема Лагранжа о среднем",
+                "formulation": "Пусть $f \\in C([a, b])$ и дифференцируема на интервале $(a, b)$. Тогда $\\exists \\xi \\in (q, b): \\ f(b) - f(a) = f'(\\xi)(b-a)$",
+                "proof": "Применить теорему Коши о среднем при $f = f$ и $g = x$"
+              },
+              {
+                "name": "Теорема",
+                "formulation": "Пусть $f \\in C(U_{\\delta}(x_{0}))$, $f$ дифференцируема в $\\mathring{U}_{\\delta}(x_{0})$: Если $\\exists \\lim\\limits_{x \\to x_{0}+0} f'(x_{0}),$ то $\\exists f'_{+}(x_{0}) = \\lim\\limits_{x\\to x_{0}+0} f'(x)$; Если $\\exists \\lim\\limits_{x \\to x_{0}-0} f'(x_{0}),$ то $\\exists f'_{-}(x_{0}) = \\lim\\limits_{x\\to x_{0}-0} f'(x)$",
+                "proof": "Докажем для правостороннней производной, так как для левосторонней аналогично. Фиксируем $x\\in \\mathring{U}^{+}_{\\delta}(x_{0})$. Выполнены все условия теоремы Лагранжа о среднем на отрезке $[x_{0}, x] \\Rightarrow \\xi(x) \\in (x_{0}, x):\\  \\cfrac{f(x) - f(x_{0})}{x-x_{0}} = f'(\\xi(x)) \\quad (*)$. Но $x$ был выбран произвольно и $\\xi(x) \\neq x_{0} \\quad \\forall x \\in \\mathring{U}^{+}_{\\delta}(x_{0}) \\Rightarrow \\exists \\lim\\limits_{x \\to x_{0}+0} f'(\\xi(x)) =\\lim\\limits_{\\xi \\to x_{0}+0} f'(\\xi) \\Leftrightarrow \\exists \\lim\\limits_{x \\to x_{0}+0} \\cfrac{f(x) - f(x_{0})}{x-x_{0}} = f'_{+}(x_{0})$. Значит, в силу $(*)$ получаем $\\lim\\limits_{\\xi \\to x_{0}+0} f'(\\xi) = f'_{+}(x_{0})$. Аналогично для левосторонней производной"
+              },
+              {
+                "name": "Лемма",
+                "formulation": "Пусть $f$ дифференцируема на интервале $(a, b)$. Пусть $x, y \\in (a, b)$ и $f'(x) \\cdot f'(y) < 0$. Тогда $\\exists \\xi \\in (x, y):\\  f'(\\xi) = 0$",
+                "proof": "Рассмотрим случай $f'(x) > 0 \\ f'(y) < 0$. Так как $f \\in C((a, b)) \\Rightarrow f \\in C([x,y])$. Значит, $ f$ достигает максимума и минимума на $[x,y].$ Точка максимума находится на $(x,y)$, так как $\\begin{cases} f'_{+}(x_{M}) \\leq 0\\\\ f'_{-}(x_{M}) \\geq 0 \\end{cases}$. То есть точка максимума $\\begin{cases} x_{M} \\neq x,\\\\ x_{M} \\neq y. \\end{cases}$ Следовательно, по теореме Ферма $f'(x_{M}) = 0.$ Аналогично рассматривается случай $f'(x) < 0 \\ f'(y) > 0$"
+              },
+              {
+                "name": "Теорема Дарбу",
+                "formulation": "Пусть $f$ дифференцируема на интервале $(a, b)$. Тогда если $f'$ принимает какие-либо два значения, то она принимает все значения между ними",
+                "proof": "Пусть $\\begin{cases} f'(x) = A \\\\ f'(y) = B \\\\ A \\neq B \\end{cases}$ Покажем, что $\\forall C\\in \\left(A, B\\right) \\ \\exists x_{c} \\in (x,y): f'(x_{c}) = C $. Фиксируем $C \\in \\left(A, B \\right)$. Рассмотрим $h(t) = f(t) - C\\cdot t$. $h$ дифференцируема на $(x,y)$. $\\begin{gathered} h'(x) = f'(x) - C = A - C \\\\ h'(y) = f'(y) - C = B-C \\end{gathered} \\Rightarrow h'(x)\\cdot h'(y) = \\left(A-C\\right)\\left(B-C\\right) < 0 $. Следовательно, по предыдущей лемме: $\\exists \\xi \\in (x,y): \\ h'(\\xi) = 0 = f'(\\xi) - C \\Rightarrow f'(\\xi) = 0$. Тогда положим $x_{c} = \\xi$"
+              },
+              {
+                "name": "Формула Тейлора с остаточным членом в форме Пеано",
+                "formulation": "Путь $f$ дифференцируемо в точке $x_{0} \\ n$ раз, $n \\in \\N_{0.}$ Тогда $f(x) = \\sum\\limits_{k = 0}^n \\cfrac{f^{(k)(x_{0})}}{k!}(x-x_{0})^{k} + o\\Bigl( (x-x_{0})^{n} \\Bigr), x \\to x_{0}$",
+                "proof": "Так как $\\exists f^{(n)}(x_{0}),$ то $\\exists U_{\\delta}(x_{0}),$ в которой определена $f^{(n-1)}(x).$ По определению $r_{x_{0}}^{n} [f](x) = f(x) - T_{x_{0}}^{n} [f](x), \\quad \\phi_{n}(x) = (x-x_{0})^{n}$. Достаточно доказать, что $\\cfrac{r_{x_{0}}^{n} [f](x)}{(x-x_{0})^{n}} \\to 0, x\\to x_{0}$. Заметим, что $\\phi_{n}(x_{0}) = (x-x_{0})^{n} = 0, \\quad r_{x_{0}}^{n} [f](x_{0}) = 0.$ Тогда $\\cfrac{r_{x_{0}}^{n} [f](x)}{(x-x_{0})^{n}} = \\cfrac{r_{x_{0}}^{n} [f](x) - r_{x_{0}}^{n} [f](x_{0})}{\\phi_{n}(x) - \\phi_{n}(x_{0})} $. Так как $r_{x_{0}}^{n} [f](x)$ дифференцируема $n$ раз, то можно применить теорему Коши о среднем: $ \\cfrac{r_{x_{0}}^{n} [f](x) - r_{x_{0}}^{n} [f](x_{0})}{\\phi_{n}(x) - \\phi_{n}(x_{0})} = \\cfrac{\\Big(r_{x_{0}}^{n} [f]\\Big)'(\\xi)}{\\phi_{n}'(\\xi)},\\ \\textrm{где}\\ \\xi \\in (x, x_{0})$. По предыдущей лемме имеем $\\forall k \\in \\{0, \\ldots, n\\} \\hookrightarrow \\Bigl(r_{x_{0}}^{n} [f](x) \\Bigr)^{(k)}(x_{0}) = 0$ и $\\forall k \\in \\{0, \\ldots, n-1\\} \\hookrightarrow \\phi_{n}^{(k)}(x_{0})=0$. $\\cfrac{\\Big(r_{x_{0}}^{n} [f]\\Big)'(\\xi)}{\\phi_{n}'(\\xi)} =\\cfrac{r_{x_{0}}^{n-1} [f'](\\xi)}{n \\cdot \\phi_{n-1}(\\xi)} = \\cfrac{\\Big(r_{x_{0}}^{n} [f]\\Big)'(\\xi_{1}) - \\Big(r_{x_{0}}^{n} [f]\\Big)'(x_{0})}{n(\\phi_{n-1}(\\xi_{1}) - \\phi_{n-1}(x_{0}))} $. Тогда, снова применяя теорему Коши о среденем получаем: $\\cfrac{\\Big(r_{x_{0}}^{n} [f]\\Big)'(\\xi_{1}) - \\Big(r_{x_{0}}^{n} [f]\\Big)'(x_{0})}{n(\\phi_{n-1}(\\xi_{1}) - \\phi_{n-1}(x_{0}))} = \\cfrac{\\Big(r_{x_{0}}^{n} [f]\\Big)^{(2)}(\\xi_{1})}{\\phi_{n}^{2}(\\xi_{1})},\\ \\textrm{где}\\ \\xi \\in (\\xi, x_{0})$. Повторяем предыдущий шаг $n-1$ раз. После него получим $\\cfrac{r_{x_{0}}^{n} [f](x)}{(x-x_{0})^{n}}= \\ldots =\\cfrac{\\Big(r_{x_{0}}^{n} [f]\\Big)^{(n-1)}(\\xi_{n-1}) - \\Big(r_{x_{0}}^{n} [f]\\Big)^{(n-1)}(x_{0})}{n!(\\xi_{n-1} - x_{0}))},\\ \\textrm{где}\\ \\xi_{n-1} \\in (\\xi{n-2}, x_{0}) $. Заметим, что $ \\xi_{n-1}(x) \\in (x_{0}, x)$. Следовательно, $\\xi_{n-1}(x) \\to x_{0}, x \\to x_{0},$ но $\\xi_{n-1}(x) \\neq x_{0}.$ Значит, $\\exists \\lim\\limits_{x\\to x_{0}} \\cfrac{\\Big(r_{x_{0}}^{n} [f]\\Big)^{(n-1)}(\\xi_{n-1}) - \\Big(r_{x_{0}}^{n} [f]\\Big)^{(n-1)}(x_{0})}{n!(\\xi_{n-1} - x_{0}))}.$ По теореме о замене переменной при вычислении предела он равен $\\lim\\limits_{\\xi_{n-1} \\to x_{0}} \\cfrac{\\Big(r_{x_{0}}^{n} [f]\\Big)^{(n-1)}(\\xi_{n-1}) - \\Big(r_{x_{0}}^{n} [f]\\Big)^{(n-1)}(x_{0})}{n!(\\xi_{n-1} - x_{0}))} = \\cfrac{\\Big(r_{x_{0}}^{n} [f]\\Big)^{(n)}(x_{0})}{n!} = 0 \\Rightarrow \\exists  \\lim\\limits_{x\\to x_{0}} \\cfrac{r_{x_{0}}^{n} [f](x)}{(x-x_{0})^{n}} = 0$"
+              },
+              {
+                "name": "Лемма",
+                "formulation": "$\\phi_{n}(x) = (x-x_{0})^{n}$ Тогда $\\begin{enumerate} \\item[a)] $\\forall k \\in \\{0, \\ldots, n\\} \\hookrightarrow \\phi_{n}^{(k)} = n(n-1)\\ldots (x-k+1)(x-x_{0})^{n-k}, $ $ \\forall k> n \\hookrightarrow \\phi_{n}^{(k)}(x) \\equiv 0$ $\\item[b)] $ $\\phi_{n}^{(k)}(x_{0}) = \\begin{cases} 0, k \\neq n\\\\ n!, k =n \\end{cases}$ $\\end{enumerate}$",
+                "proof": "Пункт b) сразу следует из пункта  a). Пункт a) доказывается по индукции: При $k = 1$ очевидно. Пусть доказано при каком-то $k \\in \\N, \\ k \\in \\{1, \\ldots, n-1\\}$. Тогда $\\Bigl((x_{0})^{n}\\Bigr)^{(k+1)} =\\Bigl(n(n-1)\\ldots(n-k+1)(x-x_{0})^{n-1}\\Bigr)' =$ $= n(n-1)\\ldots (x-k+1)(x-x_{0})^{n-(k+1)} $"
+              },
+              {
+                "name": "Лемма",
+                "formulation": "Пусть $\\exists f^{(n)}(x_{0}) \\in \\R$. Тогда $\\forall k \\in \\{0, \\ldots, n\\} \\hookrightarrow \\Bigl(r_{x_{0}}^{n} [f](x) \\Bigr)^{(k)}(x_{0}) = 0$",
+                "proof": "Фиксируем $ k \\in \\{0, \\ldots, n\\}$. $r_{x_{0}}^{n} [f](x) = f(x_{0}) -  \\sum\\limits_{j = 0}^n \\cfrac{f^{(j)}}{j!}(x-x_{0})^{j}$. $\\Bigl(r_{x_{0}}^{n} [f](x)\\Bigr)^{(k)} \\Big|_{x = x_{0}} = f^{(k)}(x_{0}) -  \\Biggl(\\sum\\limits_{j = 0}^n \\cfrac{f^{(j)}}{j!}(x-x_{0})^{j}\\Biggr)^{(k)} \\Bigg|_{x=x_{0}} = f^{(k)}(x_{0}) - f^{(k)}(x_{0}) \\cfrac{k!}{k!} = 0$"
+              }
+            ]
+          }
+        },
+        {
+          "output": {
+            "definitions": [
+              {
+                "term": "Экспонента",
+                "definition": "Если в показательной функции $a = e$, то функция вида $e^x$ называется экспонентой"
+              },
+              {
+                "term": "Логарифм",
+                "definition": "Пусть $a > 0, a \\neq 1$, тогда существует обратная функия к $a^x$, называется логарифмом и записывается как $\\log_a x$"
+              },
+              {
+                "term": "Натуральный логарифм",
+                "definition": "$ln x := \\log_e x$ и называется натуральным логарифмом"
+              },
+              {
+                "term": "Функция $x^{\\alpha}$",
+                "definition": "Пусть $\\alpha \\in \\R$. Рассмотим функцию: $x^{\\alpha} := e^{\\alpha ln x}, \\ x> 0$ Эта функция строго монотонна (за исключением случая $\\alpha = 0$). Она непрерывна на луче $(0, +\\infty)$ как композиция непрерывных функций. Если $\\alpha \\geq 0$, то $x^{\\alpha}$ можно рассмотреть на луче $[0, +\\infty),$ полагая $0^{\\alpha} := 0$"
+              },
+              {
+                "term": "Эквивалентность функций",
+                "definition": "Пусть $\\delta_{0} > 0, \\ x_{0} \\in \\overline{\\R}$. Пусть $\\begin{gathered} f: \\mathring{U}_{\\delta_{0}}(x_{0}) \\mapsto \\R, \\\\ g:\\mathring{U}_{\\delta_{0}}(x_{0}) \\mapsto \\R, \\end{gathered}$ Будем говорить, что $f(x) \\sim g(x),\\  x\\to x_{0},$ если $\\exists \\theta$:  $\\mathring{U}_{\\delta_{0}}(x_{0}) \\mapsto \\R,$ такая что 1. $\\lim\\limits_{x \\to x_{0}} \\theta(x)= 1$; 2. $f(x) = \\theta(x) \\cdot g(x) \\quad \\forall x \\in \\mathring{U}_{\\delta_{0}}(x_{0})$."
+              },
+              {
+                "term": "Эквивалентность функций (книжное определение)",
+                "definition": "$f(x) \\sim g(x), x\\to x_{0},$ если $\\exists \\lim\\limits_{x \\to x_{0}} \\cfrac{f(x)}{g(x)} = 1$, $g (x) \\neq 0 \\ \\forall x \\in \\R$."
+              },
+              {
+                "term": "о-малое",
+                "definition": "(о-малое) Пусть $\\delta_{0} > 0, \\ x_{0} \\in \\overline{\\R}$. Пусть $f, g: \\mathring{U}_{\\delta_{0}}(x_{0}) \\mapsto \\R$. Говорят, что $f$ является \\textit{бесконечно малой функцией по сравнению с $g$ при $x \\to x_{0}$}, и записывается это как $f(x) = o(g(x)), x \\to x_{0}$, если $\\exists \\epsilon (x)$: $\\mathring{U}_{\\delta_{0}}(x_{0}) \\mapsto \\R$ такая что: 1. $\\epsilon(x) \\to 0, x\\to x_{0}$; 2. $f(x) = \\epsilon(x)g(x) \\quad \\forall x \\in \\mathring{U}_{\\delta_{0}}(x_{0})$."
+              },
+              {
+                "term": "O-большое",
+                "definition": "Пусть $\\delta_{0} > 0, \\ x_{0} \\in \\overline{\\R}$. Пусть $f, g: \\mathring{U}_{\\delta_{0}}(x_{0}) \\mapsto \\R$. Будем говорить, что $f$ \\textit{ограничена относительно $g$ в окрестности точки $x_{0}$} и записывать $f(x) = O(g(x)), x\\to x_{0}$, если $\\left\\{ \\begin{gathered} \\exists C > 0: \\hfill \\\\ \\exists \\delta \\in (0, \\delta_{0}) \\end{gathered} \\right. \\quad |f(x)| \\leq C|g(x)| \\quad \\forall x\\in \\mathring{U}_{\\delta} (x_{0})$"
+              },
+              {
+                "term": "Производная функции в точке",
+                "definition": "Пусть $f: U_{\\delta_{0}}(x_{0}) \\mapsto \\R, \\ x_{0} \\in \\R, \\delta_{0} > 0.$ \\textit{Производной функции $f$ в точке $x_{0}$} называется: $\\cfrac{df}{dx}(x_{0}) = f'(x_{0}) = \\lim\\limits_{x \\to x_{0}} \\cfrac{f(x)- f(x_{0})}{x - x_{0}} \\in \\overline{\\R}$"
+              },
+              {
+                "term": "Секущая",
+                "definition": "Пусть $x_{0} \\in \\R, \\ \\delta_{0} > 0 \\quad x_{0}, x_{0} + h \\in U_{\\delta_{0}}(x_{0}).$ \\textit{Секущей} называется прямая, проходящая через точки $(x_{0}, f(x_{0}))$ и $(x_{0} + h, f(x_{0} + h))$"
+              },
+              {
+                "term": "Дифференцируемость функции в точке",
+                "definition": "Пусть $f: U_{\\delta_{0}}(x_{0}) \\mapsto \\R, \\ x_{0} \\in \\R, \\delta_{0} > 0.$ Будем говорить, что $f$ \\textit{дифференцируема в точке $x_{0},$} если $\\exists A \\in \\R: f(x) = f(x_{0}) + A(x-x_{0}) + o(x-x_{0}), x\\to x_{0}$"
+              },
+              {
+                "term": "Дифференциал функции в точке",
+                "definition": "Пусть $f$ дифференцируема в точке $x_{0}$. Тогда \\textit{дифференциалом $f$ в точке $x_{0}$} называется функция $df_{x_{0}}(h) = f'(x_{0})h$ На практике обычно используют обозначения $df(x_{0}, dx) = f'(x_{0})dx$"
+              }
+            ],
+            "theorems": [
+              {
+                "name": "Свойства показательной функции",
+                "formulation": "Cчитаем $a, b, c \\in (0; +\\infty)$, если не сказано обратного. 1. $a^x$~---~строго возрастает & $a \\in (1; +\\infty)$  2. $a^x$~---~строго убывает & $a \\in (0, 1)$ 3. $a^x > 0$ & $\\forall x \\in \\R$ 4. $a^x \\cdot a^y = a^{x + y}$ & $\\forall x, y \\in \\R$ 5. $(a^x)^y = a^{xy}$ & $\\forall x, y \\in \\R$ 6. $(bc)^x = b^x \\cdot c^x$ & $\\forall x \\in \\R$ 7. $a^x \\in \\text{C} \\big( \\R \\big)$",
+                "proof": "1. Докажем первое свойство, $a \\in (1; +\\infty)$, второе анологично. Возьмём $x, y \\in \\R$: $x < y$. Так как $x < y \\Rightarrow \\exists p, q \\in \\Q$: $\\ p \\geq x$ и $ q \\leq y$: $x < p < q < y.$ Возьмем последовательность $\\{r_{n}'\\} \\subset \\Q$: $\\lim\\limits_{n\\to \\infty} r_{n}' = x$. Тогда $x \\leq r_n' \\leq p  \\ \\forall n \\in \\N.$ Возьмем последовательность $\\{r_{n}''\\} \\subset \\Q$: $\\lim\\limits_{n\\to \\infty} r_{n}'' = y$. Тогда $q \\leq r_n'' \\leq y \\ \\forall n \\in \\N.$ Пользуясь свойством монотонности $a^r$ по $r \\in \\Q$  $a^{x} := \\lim\\limits_{n \\to \\infty} a^{r_{n}'}$, $a^{y} := \\lim\\limits_{n \\to \\infty} a^{r_{n}''}$. $a^{r_{n}'} \\leq a^{p} < a^{q} \\leq a^{r_{n}''} \\ \\forall n \\in \\N$ Из предельного перехода в неравенствах и используя определения $a^x$ и $a^y$ получаем: $\\left\\{ \\begin{array}{l} a^x \\leq a^p\\\\  a^q \\leq a^y \\end{array} \\right. \\ \\Rightarrow a^x \\leq a^p < a^q \\leq a^y$ 2. Докажем третье свойство: $a > 1$, $a \\in (0, 1)$ аналогично Пусть $x \\in \\R$. Тогда $\\exists p \\in \\Q: p \\leq x$, но для любого рационального числа: $0 < a^p \\leq a^x.$ 3. Докажем четвертое свойство: Пусть $x, y \\in \\R.$ Возьмем аппроксимирующие последовательности: $\\{r_{n}'\\}, \\{r_{n}''\\} \\subset \\Q : \\lim\\limits_{n\\to \\infty} r_{n}' = x, \\  \\lim\\limits_{n\\to \\infty} r_{n}'' = y .$ $a^{r_n'}\\cdot a^{r_n''} = a^{r_n' + r_n''}, \\forall n \\in \\N$ Переходим к пределу в равенстве: $a^{x}\\cdot a^{y} = a^{x + y}$ Так как $x$ и $y$ - произвольные, верно для всех 4. Докажем пятое свойство: Фиксируем произвольные $x,y \\in \\R$ Возьмем две аппроксимирующие последовательности для x  Обозначим $r_{n}' \\downarrow x, \\ , n \\to \\infty$ Последовательность $r_n'$ монотонно убывает к $x$ Обозначим $r_{n}'' \\uparrow x, \\ , n \\to \\infty$ Последовательность $r_n''$ монотонно возрастает к $x$ $\\rho_{n}' \\uparrow y, \\ n \\to \\infty$ $\\rho_{n}'' \\uparrow y, \\ n \\to \\infty$ $(a^{r_{n}''})^{\\rho_{n}''} \\leq (a^{x})^{\\rho_{n}''} \\leq (a^{x})^{y} \\leq (a^{r_{n}'})^{y} \\leq a^{r_{n}' \\cdot \\rho_{n}'}$ В итоге  $(a^{r_{n}''})^{\\rho_{n}''} \\leq (a^{x})^{y} \\leq a^{r_{n}' \\cdot \\rho_{n}'}$ Переходим к переделу при $n \\to \\infty$ в этих двух неравенствах $a^{x \\cdot y} \\leq (a^{x})^{y} \\leq a^{x \\cdot y} \\Rightarrow (a^{x})^{y} = a^{x \\cdot y}$ 5. Шестое свойство доказывается также предельным переходом $\\{r_{n}'\\} \\subset \\Q : \\quad r_{n}' \\to x, n \\to \\infty$ $(bc)^x = \\lim\\limits_{n \\to \\infty} (bc)^{r_n'} = \\lim\\limits_{n \\to \\infty} b^{r_n'}c^{r_n'} = \\lim\\limits_{n \\to \\infty} b^{r_n'} \\cdot \\lim\\limits_{n \\to \\infty} c^{r_n'} = b^x c^x$ 6. Седьмое свойство (о непрерывности) доказано."
+              },
+              {
+                "name": "Свойства логарифма",
+                "formulation": "Если $a > 1$, то $\\log_a x$ корректно определена, строго возрастает и непрерывна нa луче $(0, +\\infty)$, а ее область значений~---~$\\R$;  Если $a \\in (0, 1)$ то $\\log_a x$ корректно определена, строго убывает и непрерывна н луче $(0, +\\infty)$, а ее область значений~---~$\\R$.",
+                "proof": "Докажем при $a > 1$, при $a \\in (0, 1)$, аналогично. Так как $a^x$ - строго возрастает и непрерывна, то существует обратная к ней Область значений луч $(0, +\\infty)$ При  $n \\in \\N$, $a^n \\geq 1 + (a - 1)n \\to + \\infty, \\ n \\to + \\infty$  $a^{-n} = \\frac{1}{a^n} \\leq \\frac{1}{(a - 1)n} \\to + 0, \\ n \\to + \\infty$  $\\underset{x \\in \\R}{\\inf} a^x = 0$ $\\underset{x \\in \\R}{\\sup} a^x = + \\infty$ По обобщенной теореме о промежуточном значении для $a^x$ и теоремы об обратной функции. $\\log_a x$ -непрерывен строго возратает на луче $(0, +\\infty)$, и область значений $\\R$"
+              },
+              {
+                "name": "Школьные свойства логарифма",
+                "formulation": "1. $\\log_a xy = \\log_a x + \\log_a y, \\ a > 0, a \\neq 1, \\ \\forall x,y > 0$ 2. $\\log_{a} b \\cdot \\log_{b} a = 1 \\quad a > 0, a \\neq 1, \\quad b> 0, b\\neq 1$ 3. $\\log_{a} x^{\\alpha} = \\alpha \\log_{a} x, \\ x > 0, a> 0, a\\neq 1, \\alpha \\in \\R$",
+                "proof": "1. Фиксируем произвольные $x, y$, по определнию логарифма (обратная функция): $xy = a^{\\log_{a}(xy)}$ $a^{ \\log_a x + \\log_a y } = (a^{ \\log_a x})(a^{ \\log_a y}) = xy = a^{ \\log_a x}$ Так как $a^{x}$ инъективно $a^{\\log_{a}(xy)} = a^{\\log_{a} x + \\log_{a} y} \\Rightarrow \\log_{a} xy = \\log_{a} x + \\log_{a} y$ 2. В силу инъективности $a^{x}$ $a^{\\log_{a}b \\cdot \\log_{b} a} = \\left( a^{\\log_{a} b}\\right)^{\\log_{b} a} = b^{\\log_{b} a} = a = a^{1}$ 3.  $a^{\\log_{a} x^{\\alpha}} = x^{\\alpha}$ $a^{\\alpha \\log_{a} x} =\\left(a^{\\log_{a} x}\\right)^{\\alpha} = x^{\\alpha}$"
+              },
+              {
+                "name": "Второй замечательный предел",
+                "formulation": "$\\exists \\lim\\limits_{x \\to 0} \\left( 1 + x \\right)^{^1/_x} = e$~---~ \\textit{второй замечательный предел}",
+                "proof": "Следует из лемм 1, 2 и 3."
+              },
+              {
+                "name": "Критерий дифференцируемости функции в точке",
+                "formulation": "Функция $f: U_{\\delta_{0}}(x_{0}) \\mapsto \\R$ дифференцируема в точке $x_{0} \\Leftrightarrow f'(x_{0}) \\in \\R.$ При этом $A = f'(x_{0}).$",
+                "proof": "Функция дифференцируема в точке $x_{0}$ значит: $f(x) = f(x_{0}) + A(x-x_{0}) + \\epsilon(x)(x-x_{0}), \\ \\forall x \\in U_{\\delta_{0}}(x_{0}), \\ \\textrm{и} \\ \\epsilon \\to 0, x \\to x_{0} \\Leftrightarrow$ $\\Leftrightarrow \\cfrac{f(x)- f(x_{0})}{x - x_{0}} = A  + \\epsilon(x), \\epsilon \\to 0, x \\to x_{0} \\Leftrightarrow  \\lim\\limits_{x \\to x_{0}} \\cfrac{f(x)- f(x_{0})}{x - x_{0}} = A$"
+              }
+            ]
+          }
+        },
+        {
+          "output": {
+            "definitions": [
+              {
+                "term": "Формула Маклорена",
+                "definition": "Формулой Маклорена называется формула Тейлора с центром в нуле. То есть если существует f^{(n)}(0) \\in \\R, то f(x) = \\sum\\limits_{k = 0}^{n} \\cfrac{f^{(k)}(0)}{k!} \\cdot x^{k} + o(x^{n}), x \\to 0"
+              }
+            ],
+            "theorems": [
+              {
+                "name": "Формула Тейлора с остаточным членом в форме Лагранжа",
+                "formulation": "Пусть существует $f^{(n+1)}$ в некоторой $U_{\\delta}(x_{0})$. Тогда $\\forall x\\in \\mathring{U}_{\\delta}(x_{0})$ справедливо равенство f(x) = \\sum\\limits_{k = 0}^n \\cfrac{f^{(k)}(x_{0})}{k!}(x-x_{0})^{k} + \\cfrac{f^{(n+1)}(\\xi)}{(n+1)!}(x-x_{0})^{n+1}, \\ \\textrm{где} \\ \\xi \\in (x_{0}, x)",
+                "proof": "\\begin{proof}\n    \\phi_{n+1}(x) = (x-x_{0})^{n+1}$$\n    \n    $$r_{x_{0}}^{n} [f](x) = f(x) - T_{x_{0}}^{n} [f](x)$$\n    \n    Можно применить \\hyperlink{thrm5.11}{теорему Коши} $n+1$ раз:\n    \n    $$\\cfrac{r_{x_{0}}^{n} [f](x)}{\\phi_{n+1}(x)} = \\cfrac{\\Big(r_{x_{0}}^{n} [f]\\Big)^{(n+1)}(\\xi_{n+1})}{(n+1)!} $$\n    \n    Так как $(n+1)$-ая производная полинома степени $n$ равна нулю, то справедливо равенство\n    \n    $$\\cfrac{\\Big(r_{x_{0}}^{n} [f]\\Big)^{(n+1)}(\\xi_{n+1})}{(n+1)!} = \\cfrac{f^{(n+1)}(\\xi_{n+1})}{(n+1)!}, \\xi := \\xi_{n+1} $$\n\\end{proof}"
+              },
+              {
+                "name": "Теорема о единственности",
+                "formulation": "Пусть существует $f^{(n)}(x_{0}) \\in \\R.$ Тогда, если $f(x) = \\sum\\limits_{k = 0}^{n} a_{k} (x-x_{0})^{k} + o\\Big((x-x_{0})^{n}\\Big), x \\to x_{0},$ то $a_{k} = \\cfrac{f^{(k)}(x_{0})}{k!}$",
+                "proof": "\\begin{proof}\n    Так как $\\exists f^{(n)}(x_{0}) \\in \\R$, можно воспользоваться \\hyperlink{thrm5.14}{формулой Тейлора с остаточным членом в форме Пеано}. Тогда \n        \n    $$\\begin{cases}\n            f(x) = \\sum\\limits_{k = 0}^{n} a_{k} (x-x_{0})^{k} +  o\\Big((x-x_{0})^{n}\\Big) , x \\to x_{0}, \\\\\n        f(x) = \\sum\\limits_{k = 0}^{n} \\cfrac{f^{(k)}(x_{0})}{k!} (x-x_{0})^{k} +  o\\Big((x-x_{0})^{n}\\Big) , x \\to x_{0},\n        \\end{cases}$$\n    \n    $$\n \\lim\\limits_{x\\to x_{0}} f(x) =  a_{0} = f(x_{0})\n    $$\n    \n    $$\n    \\begin{cases}\n        \\cfrac{f(x)-f(x_{0})}{x-x_{0}} = \\sum\\limits_{k=1}^{n} a_{k} (x-x_{0})^{k-1} +o\\Big((x-x_{0})^{n-1}\\Big) , x \\to x_{0} \\\\\n        \\cfrac{f(x)-f(x_{0})}{x-x_{0}} = \\sum\\limits_{k=1}^{n} \\cfrac{f^{(k)}(x_{0})}{k!} (x-x_{0})^{k-1} +o\\Big((x-x_{0})^{n-1}\\Big) , x \\to x_{0}\n    \\end{cases}\n     $$\n     \n     $$ a_{1} = f'(x_{0})$$\n     \n     И так далее $n$ шагов. Получим, что $a_{k} = \\cfrac{f^{(k)}(x_{0})}{k!}$\n\\end{proof}"
+              },
+              {
+                "name": "Почленное дифференцирование формулы Тейлора",
+                "formulation": "Пусть $n \\in \\N$ и существует  $f^{(n)}(x_{0}).$ Тогда если $f(x) = \\sum\\limits_{k = 0}^{n} a_{k} (x-x_{0})^{k} + o\\Big((x-x_{0})^{n}\\Big), x \\to x_{0},$ то $f'(x) = \\sum\\limits_{k = 1}^{n} a_{k} \\cdot k \\cdot (x-x_{0})^{k-1} + o\\Big((x-x_{0})^{n-1}\\Big), x \\to x_{0}.$",
+                "proof": "\\begin{proof}\n    В силу \\hyperlink{thrm5.16}{теоремы о единственности} $a_{k} = \\cfrac{f^{(k)}(x_{0})}{k!}$.\n    \n        \\hyperlink{thrm5.14}{По формуле Тейлора с остаточным членом в форме Пеано}, примененной к функции $f'(x)$, получим, что \n    \n    $$f'(x) = \\sum\\limits_{k = 0}^{n-1} \\cfrac{(f')^{(k)}(x_{0})}{k!} (x-x_{0})^{k} + o\\Big((x-x_{0})^{n-1}\\Big), x \\to x_{0}$$ \n    \n    $$j = k + 1$$\n    \n    $$f'(x) = \\sum\\limits_{j = 1}^{n} \\cfrac{f^{(j)}(x_{0})}{(j-1)!} (x-x_{0})^{j-1} + o\\Big((x-x_{0})^{n-1}\\Big), x \\to x_{0}$$\n    \n    $$f'(x) = \\sum\\limits_{j = 1}^{n} \\cfrac{f^{(j)}(x_{0})}{j!} \\cdot j \\cdot (x-x_{0})^{j-1} + o\\Big((x-x_{0})^{n-1}\\Big), x \\to x_{0}\n    $$\n    \n    $$f'(x) = \\sum\\limits_{k = 1}^{n} a_{k} \\cdot k \\cdot (x-x_{0})^{k-1} + o\\Big((x-x_{0})^{n-1}\\Big), x \\to x_{0}.$$\n\\end{proof}"
+              },
+              {
+                "name": "Почленное интегрирование формулы Тейлора",
+                "formulation": "Пусть существует $f^{(n+1)}(x_{0})$ и $f'(x) = \\sum\\limits_{k = 0}^{n} b_{k} (x-x_{0})^{k} + o\\Big((x-x_{0})^{n}\\Big)$. Тогда $f(x) = f(x_{0}) + \\sum\\limits_{k=0}^{n} \\cfrac{b_{k}}{k+1} \\cdot (x-x_{0})^{k+1} + o\\Big((x-x_{0})^{n+1}\\Big), x \\to x_{0}$",
+                "proof": "\\begin{proof}\n    В силу \\hyperlink{thrm5.16}{теоремы о единственности} $b_{k} = \\cfrac{(f')^{(k)}(x_{0})}{k!}$.\n    \n        \\hyperlink{thrm5.14}{По формуле Тейлора с остаточным членом в форме Пеано}, примененной к функции $f$, получим, что \n    \n    $$f(x) = f(x_{0}) + \\sum\\limits_{k = 1}^{n+1} \\cfrac{(f)^{(k)}(x_{0})}{k!} (x-x_{0})^{k} + o\\Big((x-x_{0})^{n+1}\\Big), x \\to x_{0}$$ \n    \n    $$j = k - 1$$\n    \n    $$f(x) = f(x_{0}) + \\sum\\limits_{j = 0}^{n} \\cfrac{(f')^{(j)}(x_{0})}{(j+1)!} (x-x_{0})^{j+1} + o\\Big((x-x_{0})^{n+1}\\Big), x \\to x_{0}$$\n    \n    $$f(x) = f(x_{0}) + \\sum\\limits_{k = 0}^{n} \\cfrac{b_{k}}{k+1} \\cdot (x-x_{0})^{k+1} + o\\Big((x-x_{0})^{n+1}\\Big), x \\to x_{0}.$$\n\\end{proof}"
+              }
+            ]
+          }
+        },
+        {
+          "output": {
+            "definitions": [],
+            "theorems": [
+              {
+                "name": "(\\hypertarget{thrm5.19}{Раскрытие неопределенности вида $\\frac{0}{0}$})",
+                "formulation": "Пусть $-\\infty < a< b< +\\infty$. Пусть $f$ и $g$ дифференцируемы на $(a,b)$, а также $\\exists \\lim\\limits_{x\\to a+0} f(x) = 0, \\ \\exists \\lim\\limits_{x\\to a+0} g(x) = 0$ и $g'(x) \\neq 0 \\quad \\forall x \\in (a,b)$. Тогда, если $\\exists \\lim\\limits_{x\\to a+0} \\dfrac{f'(x)}{g'(x)} = C\\in \\overline{\\R},$ то $\\exists \\lim\\limits_{x\\to a+0} \\dfrac{f(x)}{g(x)} =\\dfrac{f'(x)}{g'(x)} =C$",
+                "proof": "Доопределим функции $f$ и $g$ нулем в точке $a$. Тогда $f$ и $g$ станут непрерывными справа в точке $a.$ Значит, $\\forall x \\in (a, b)$ можно воспользоваться \\hyperlink{thrm6.3}{теоремой Коши о среднем}: \t$\\dfrac{f(x)}{g(x)} = \\dfrac{f(x) - f(a)}{g(x) - g(a)} = \\dfrac{f'(\\xi(x))}{g'(\\xi(x))},$ где $\\xi(x) \\in (a, x).$\n\t\n\tТак как $\\lim\\limits_{x\\to a+0}\\xi (x) = a, \\ \\xi(x) \\neq a \\quad \\forall x \\in (a, b)$, можно воспользоваться \\hyperlink{thrm4.18}{теоремой о замене переменной при вычислении предела}, то есть $\\lim\\limits_{x\\to a+0}\\dfrac{f'(\\xi(x))}{g'(\\xi(x))} = \\lim\\limits_{\\xi\\to a+0} \\dfrac{f'(\\xi)}{g'(\\xi)} = C.$\n\t\n\tСледовательно, переходя к пределу равенства, получаем $\\exists \\lim\\limits_{x\\to a+0} \\dfrac{f(x)}{g(x)} = C$."
+              },
+              {
+                "name": "\\hypertarget{thrm5.20}{}",
+                "formulation": "Пусть $f$ и $g$ дифференцируемы на луче $(A, +\\infty),$ ($A > 0$) и $\\exists \\lim\\limits_{x\\to \\infty} f(x) = \\lim\\limits_{x \\to +\\infty} g(x) = 0.$ Пусть $g'(x) \\neq 0 \\quad \\forall x \\in (A, \\infty).$ Тогда если $\\exists \\lim\\limits_{x\\to+\\infty} \\dfrac{f'(x)}{g'(x)}= C \\in \\overline{\\R}$, то $\\exists \\lim\\limits_{x\\to +\\infty} \\dfrac{f(x)}{g(x)} = C.$",
+                "proof": "Сделаем замену: $t = t(x) = \\dfrac{1}{x}, \\quad x(t) = \\dfrac{1}{t}.$ Получаем: $(A, +\\infty) \\rightarrow \\Big(0, \\dfrac{1}{A}\\Big).$ Рассмотрим функции $f_{1}(t) = f\\Big(\\dfrac{1}{t}\\Big), \\quad g_{1}(t) = g\\Big(\\dfrac{1}{t}\\Big).$\n\t\n\tТеперь заметим, что $\\lim\\limits_{t\\to+0} f_{1}(t)= \\lim\\limits_{t\\to+0} f\\Big(\\dfrac{1}{t}\\Big) = \\lim\\limits_{x\\to+\\infty} f(x) = 0.$\n\t\n\tАналогично $\\lim\\limits_{t\\to+0} g_{1}(t) = 0.$\n\t\n\t$f_{1}$ и $g_{1}$ дифференцируемы на отрезке $\\Big(0, \\dfrac{1}{A}\\Big)$ и $g_{1}'(t) = g'\\Big(\\dfrac{1}{t}\\Big) \\cdot \\left(\\dfrac{-1}{t^{2}}\\right) \\neq 0 \\quad \\forall t \\in \\Big(0, \\dfrac{1}{A}\\Big)$. Следовательно, можем воспользоваться предыдущей теоремой:\n\t\n\t$$\\lim\\limits_{x\\to+\\infty} \\dfrac{f(x)}{g(x)}=\\lim\\limits_{t\\to+0} \\dfrac{f_{1}(t)}{g_{1}(t)}= \\lim\\limits_{t\\to+0} \\dfrac{f_{1}'(t)}{g_{1}'(t)} = \\lim\\limits_{t\\to +0}\\dfrac{\\frac{-1}{t^{2}}f'\\left(\\frac{1}{t}\\right) }{\\frac{-1}{t^{2}}g'\\left(\\frac{1}{t}\\right) } = \\lim\\limits_{x\\to +\\infty} \\dfrac{f'(x)}{g'(t)}$$\n\t\n"
+              },
+              {
+                "name": "(\\hypertarget{thrm5.21}{неопределенность $\\frac{\\infty}{\\infty}$)}",
+                "formulation": "Пусть $-\\infty< a< b< +\\infty$ и  $\n\t\t\\exists \\lim\\limits_{x\\to a+0} |f(x)| = + \\infty,$\n\t\t$\\exists \\lim\\limits_{x\\to +0} |g(x)| = +\\infty$ Пусть $f$ и $g$ дифференцируемы на $(a, b)$ и $g'(x) \\neq 0 \\ \\forall x \\in (a, b)$\n\t\tТогда если $\\exists \\lim\\limits_{x\\to a+0} \\dfrac{f'(x)}{g'(x)} = C\\in \\overline{\\R},$ то $\\exists \\lim\\limits_{x\\to a+0} \\dfrac{f(x)}{g(x)} = C.$",
+                "proof": "\\hyperlink{def4.3}{По определению предела} $\\forall \\epsilon > 0 \\ \\exists a_{\\epsilon} \\in (a, b): \\ \\dfrac{f'(x)}{g'(x)} \\in U_{\\epsilon}(C) \\ \\forall (a, a_{\\epsilon}).$\n\t\n\tЗафиксируем $\\epsilon \\in (0, 1)$ и $a_{\\epsilon}.$ Заметим, что если $x\\in (a, a_{\\epsilon}),$ то \\hyperlink{5.11}{ по теореме Коши о среднем}: \n\t\n\t$$\\dfrac{f(x)-f(a_{\\epsilon})}{g(x) - g(a_{\\epsilon})} = \\dfrac{f'(\\xi(x))}{g'(\\xi(x))}, \\textrm{где} \\ \\xi (x) \\in (x, a_{\\epsilon})  \\quad (*)$$\n\t\n\tИз-за того, что  $\\lim\\limits_{x\\to a+0} |f(x)| = + \\infty$ и $\\exists \\lim\\limits_{x\\to +0} |g(x)| = +\\infty$, в окрестности $a$ эти функции не равны нулю. Более того, $\\exists \\delta(\\epsilon) \\in (a, a_{\\epsilon}): \\forall x \\in (a, \\delta(\\epsilon)) \\hookrightarrow \\begin{cases}\n\t\t\\dfrac{|f(a_{\\epsilon})|}{|f(x)|} < \\dfrac{\\epsilon}{3} \\\\\n\t\t\\dfrac{|g(a_{\\epsilon})|}{|g(x)|} < \\dfrac{\\epsilon}{3}\n\t\\end{cases}$\n\t\n\tИз $(*)$ следует: \n\t$\\dfrac{f(x)}{g(x)} = \\dfrac{1-\\frac{g(a_{\\epsilon})}{g(x)}}{1-\\frac{f(a_{\\epsilon})}{f(x)}} \\cdot \\dfrac{f'(\\xi(x))}{g'(\\xi(x))},\\ \\textrm{где} \\ \\dfrac{f'(\\xi(x))}{g'(\\xi(x))} \\in U_{\\epsilon}(C)$ и \n\t\n\t$$1-\\epsilon < \\dfrac{1-\\epsilon/_3}{1+\\epsilon/_3} < \\dfrac{1-\\frac{g(a_{\\epsilon})}{g(x)}}{1-\\frac{f(a_{\\epsilon})}{f(x)}} < \\dfrac{1+ \\epsilon/_3}{1-\\epsilon/_3} < 1+\\epsilon$$\n\t\n\tЗначит, $\\forall x \\in (a, \\delta_{\\epsilon}) \\hookrightarrow \\dfrac{f(x)}{g(x)} \\in$ \\footnotesize$ \\left[\\begin{gathered}\n\t\\Big((c-\\epsilon)(1-\\epsilon), (c+\\epsilon)(1+\\epsilon)\\Big), \\ C \\in \\R \\\\\n\t\\left(\\frac{1-\\epsilon}{\\epsilon}, + \\infty\\right), \\ C = +\\infty  \\hfill \\\\\n\t\\left(- \\infty, \\frac{1+\\epsilon}{\\epsilon}\\right), \\ C = -\\infty \\hfill\n\t\\end{gathered}\\right. $\\normalsize$ \\Rightarrow\\lim\\limits_{x\\to a+0} \\dfrac{f(x)}{g(x)} = C$"
+              },
+              {
+                "name": "",
+                "formulation": "Пусть $f$ дифференцируема на $(a, b).$ Тогда:\n\t\\begin{enumerate}\n\t\t\\item $f'(x) \\geq 0 \\quad \\forall x\\in (a, b) \\Leftrightarrow$ $f$ нестрого возрастает на $(a, b)$.\n\t\t\\item $f'(x) \\leq 0 \\quad \\forall x\\in (a, b) \\Leftrightarrow$$f$ нестрого убывает на $(a, b)$.\n\t\t\\item Если $f'(x) > 0 \\quad \\forall x\\in (a, b),$ то $f$ строго возрастает на $(a, b)$\n\t\t\\item Если $f'(x) < 0 \\quad \\forall x\\in (a, b)$, то $f$ строго убывает на $(a, b)$.\n\t\\end{enumerate}",
+                "proof": "Докажем $1.$, $2$~---~ аналогично.\n\t\n\t$\\underline{\\textrm{Шаг 1}}$. Пусть $f'(x) \\geq 0 \\forall x\\in (a, b).$ Рассмотрим две точки $x, y \\in (a, b).$  \\hyperlink{thrm5.11cor}{По теореме Лагранжа о среднем}: $f(y) - f(x) = f'(\\xi)(y-x),$ где $f'(\\xi) \\geq 0, (y-x) > 0 \\Rightarrow f(y) \\geq f(x) \\ (*)$\n\t\n\t$\\underline{\\textrm{Шаг 2.}}$Пусть $f$ нестрого возрастает на $(a, b)$. Фиксируем точку $x, x_{0} \\in (a, b).$ \n\t\n\t$\\dfrac{f(x)-f(x_{0})}{x-x_{0}} \\geq 0,$ так как если $x > x_{0},$ то числитель неотрицательный, а знаменатель положительный, а если $x < x_{0},$ то числитель неположительный, а знаменатель отрицательный.\n\t\n\tТак как по условию $f$о условию дифференцируема в точке $x_{0},$ \\hyperlink{thrm4.8}{переходя к пределу в неравенстве} получим $f'(x_{0}) \\geq 0$. Но $x_{0}$ можно выбрать произвольно.\n\t\n\tПункты $3.$ и $4.$ доказываются применением $(*)$"
+              },
+              {
+                "name": "(\\hypertarget{thrm5.22}{Достаточное условие экстремума)}",
+                "formulation": "Пусть $f \\in C(U_{\\delta}(x_{0}))$ и дифференцируема в $\\mathring{U}_{\\delta}(x_{0})$. Тогда если производная меняет знак при переходе через точку $x_{0},$ то $x_{0}$~---~ точка локального экстремума (если знак меняется с <<$-$>> на <<$+$>>, то локальный минумум, если с <<$+$>> на <<$-$>>, то локальный максимум к). ",
+                "proof": "Если $x\\in \\mathring{U}_{\\delta}(x_{0}),$ то \\hyperlink{thrm5.11cor}{по теореме Лагранжа о среднем}: $f(x) - f(x_{0}) = f'(\\xi(x))(x-x_{0}).$ Если $\\begin{gathered}\n\t\tf'(x) \\geq 0 \\ \\forall x\\in (x_{0}-\\delta, x_{0}), \\\\\n\t\t \\ f'(x) \\leq 0 \\ \\forall x\\in (x_{0}, x_{0} + \\delta) \n\t\\end{gathered} \\Rightarrow \n\t\\begin{gathered}\n\t\t f(x) \\leq f(x_{0}) \\ \\forall x\\in (x_{0} -\\delta, x_{0}), \\\\\n\t\t f(x) \\leq f(x_{0}) \\ \\forall x \\in (x_{0}, x_{0} + \\delta).\n\t\\end{gathered}$\n\tЗначит, $x_{0}$~---~ нестрогий локальный максимум.\n\t\n\tАналогично доказываются остальные случаи."
+              },
+              {
+                "name": "(\\hypertarget{thrm5.23}{Достаточное условие экстремума в терминах высших производных)}",
+                "formulation": "Пусть $\\exists f^{(n)}(x_{0}), \\ n \\in \\N$. При этом $f^{(i)} (x_{0}) = 0 \\ \\forall i \\in \\{1, 2, \\ldots, n-1\\}, \\\n         f^{(n)} (x_{0}) \\neq 0.$ Тогда если $n$ нечетно, то $x_{0}$ не является точкой экстремума, если $n$ четно и $f^{(n)}(x_{0}) > 0$, то $x_{0}$~---~ строгий локальный минимум, если $n$ четно и $f^{(n)}(x_{0}) < 0$, то $x_{0}$~---~ строгий локальный максимум.",
+                "proof": "Так как $\\exists f^{(n)}(x_{0}),$ то \\hyperlink{thrm5.14}{по теореме Тейлора с остаточным членом в форме Пеано} $f(x) = f(x_{0}) + \\sum\\limits_{k = 1}^{n -1} \\dfrac{f^{(k)}(x_{0})}{k!}(x-x_{0})^{k} + \\dfrac{f^{(n)}(x_{0})}{n!}(x-x_{0})^{n} + o\\Big((x-x_{0})^{n}\\Big).$\n\t\n\t$$\\dfrac{f(x)-f(x_{0})}{(x-x_{0})^{n}} = \\dfrac{f^{(n)}(x_{0})}{n!} + \\epsilon(x), \\textrm{где} \\ \\epsilon(x) \\to 0, x\\to x_{0}.$$\n\t\n\tЕсли $n$ четно и $f^{(n)}(x_{0}) > 0,$ то $\\exists \\delta > 0: \\forall  x\\in \\mathring{U}_{\\delta}(x_{0}) \\hookrightarrow \\dfrac{f^{(n)}(x_{0})}{n!} + \\epsilon(x) > 0 $ и $(x-x_{0})^{n} > 0 $ Следовательно, $f(x) - f(x_{0}) > 0\\  \\forall  x\\in \\mathring{U}_{\\delta}(x_{0})$. Значит, $x_{0}$~---~ строгий локальный минимум.\n\t\n\tАналогично рассматривается случай $f^{(n)}(x_{0}) < 0.$\n\t\n\tЕсли $n$ нечетно, то знак правой части сохраниться в некоторой $U_{\\delta}(x_{0}),$ но знак $(x-x_{0})^{n}$ меняется при переходе через $x_{0}.$ Тогда и знак числителя тоже меняется при переходе через $x_{0}.$ Значит, $x_{0}$ не является точкой локального экстремума."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]

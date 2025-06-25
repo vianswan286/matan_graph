@@ -1,0 +1,410 @@
+[
+    {
+      "data": [
+        {
+          "output": {
+            "definitions": [
+              {
+                "term": "Верхняя (нижняя) грань",
+                "definition": "Число $M (m)$ называется \\textit{верхней (нижней) гранью} числового непустого множества $A \\subset \\R,$ если $x \\leq M$ ($x \\geq m$) $\\quad \\forall x \\in A.$"
+              },
+              {
+                "term": "Супремум",
+                "definition": "Пусть $A$~---~ограниченное сверху множество. Число $M \\in \\R$ называется супремумом $A$ и записывается $M = sup A$, если выполняется: 1) $M$ является верхней гранью, то есть $\\forall x \\in A \\hookrightarrow x \\leq M$. 2) $\\forall M^{'} < M \\quad \\exists a(M^{'}) \\in A$: $M^{'} < a(M^{'}) \\leq M.$ То есть никакое другое число не является верхней гранью."
+              },
+              {
+                "term": "Супремум неограниченного сверху множества",
+                "definition": "Если $A$~---~неограниченное сверху множество, то $sup A := +\\infty .$"
+              },
+              {
+                "term": "Инфимум ограниченного снизу множества",
+                "definition": "$m \\in \\R$ называется \\textit{инфимумом ограниченного снизу множества} $A$, если $m = \\inf{A} \\Longleftrightarrow \\begin{cases} a \\geq m \\quad \\forall a \\in A\\\\ \\forall m^{'} > m, \\  \\exists a(m^{'}) \\in A: m^{'} > a(m^{'}) \\geq m& \\end{cases}$"
+              },
+              {
+                "term": "Инфимум неограниченного снизу множества",
+                "definition": "Если $A$~---~неограниченное снизу множество, то $\\inf{A} := -\\infty .$"
+              },
+              {
+                "term": "Максимум (максимальный элемент)",
+                "definition": "Число $M$ называется \\textit{максимумом (максимальным элементом)} множества $E \\subset \\R \\Leftrightarrow M = max E$, если 1) $M \\in E$; 2) $M \\geq x \\  \\forall x \\in E.$ Аналогично определяется минимум."
+              },
+              {
+                "term": "Последовательность отрезков",
+                "definition": "Отображение из $\\N$ в множество всех отрезков на числовой прямой $\\R$ назовём \\textit{последовательностью отрезков} и обозначим $\\{ [a_{n}, b_{n}] \\}^{\\infty}_{n = 1}$"
+              },
+              {
+                "term": "Последовательность вложенных отрезков",
+                "definition": "Будем говорить, что $\\{ [a_{n}, b_{n}] \\}^{\\infty}_{n = 1}$~---~последовательность \\textit{вложенных отрезков}, если $\\{ [a_{n+1}, b_{n+1}] \\} \\subset \\{ [a_{n}, b_{n}] \\} \\quad \\forall n \\in \\N$"
+              },
+              {
+                "term": "Стягивающаяся последовательность вложенных отрезков",
+                "definition": "Последовательность вложенных отрезков $\\displaystyle \\bigcap_{n = 1}^{\\infty} [a_{n}, b_{n}]$ называется \\newline \\textit{стягивающейся}, если $\\forall n \\in \\N \\  \\exists [a_{m(n)}, b_{m(n)}]$: $l \\displaystyle < \\frac{1}{n}$, где $l = (b_{i} - a_{i})$. $l$~---~длина."
+              }
+            ],
+            "theorems": [
+              {
+                "name": "о существовании и единственности супремума",
+                "formulation": "$$\\forall A \\subset \\R: A \\neq \\varnothing \\hookrightarrow \\exists! \\sup{A}.$$",
+                "proof": "В случае неограниченного множества $A$ верность теоремы следует из определения. Рассмотрим случай ограниченного множества $A \\Rightarrow$ существует хотя бы одна верхняя грань. Пусть $B := \\{M \\in \\R: M - \\text{верняя грань } A\\}. \\quad B \\neq \\varnothing .$ Кроме того $A$ расположенно левее $B$. Тогда в силу аксиомы непрерывности $\\exists c \\in \\R$: $a \\leq c \\leq M \\quad \\forall a \\in A, \\quad \\forall M \\in B.$ Покажем, что $c = \\sup{A}.$ Действительно, так как $a \\leq c \\ \\forall a \\in A \\Rightarrow c$~---~верхняя грань, тогда 1 пункт определния супремума проверен. Предположим $\\exists c' < c$: $c'$~---~верхняя грань. Тогда $c' \\in B$, но $c$ было выбранно так, что $c \\leq M \\quad \\forall M \\in B \\Rightarrow c \\leq c'$~---~противоречие $\\Rightarrow \\forall c' < c \\hookrightarrow c \\notin B \\Leftrightarrow \\lnot (c' \\in B) \\Leftrightarrow \\lnot (\\forall a \\in A \\hookrightarrow a \\leq c') \\Leftrightarrow \\exists a(c') \\in A: a(c') > c'$, но так как $a(c') \\in A$, то $a(c') \\leq c.$ И тогда мы показали, что $\\forall c' < c \\quad \\exists a(c^{'}) \\in A$: $c' < a(c') \\leq c.$ Значит, мы проверили определние супремума с заменой $M$ на $c \\Rightarrow$ он существует. Докажем единственность супремума. Предположим, что $\\exists M_{1}, M_{2} \\in \\R$: $M_{1} = \\sup{A}$ и $M_{2} = \\sup{A}.$ Пусть $M_{1} > M_{2}.$ Тогда по (2) пункту определения супремума (для $M_{1}$) $\\exists a(M_{2}) \\in A$: $a(M_{2}) > M_{2} \\Rightarrow$ это противоречит тому, что $M_{2}$~---~верхняя грань (то есть (1) пункт определения $M_{2}$ как супремума) $\\Rightarrow$ такого быть не может. Случай $M_{2} > M_{1}$ аналогичен $\\Rightarrow M_{1} = M_{2},$ то есть супремум существует и единственнен."
+              },
+              {
+                "name": "о существовании и единственности инфимума",
+                "formulation": "$$\\forall A \\subset \\R: A \\neq \\varnothing \\hookrightarrow \\exists! \\inf{A}.$$",
+                "proof": "Аналогично супремуму с точностью до замены знаков."
+              },
+              {
+                "name": "лемма Архимеда",
+                "formulation": "$$\\forall M^{'} \\in \\R \\text{  } \\exists N (M^{'}) \\in \\N: N (M^{'}) > M^{'}.$$",
+                "proof": "Предположим, что $\\N$~---~ограниченно сверху $\\Rightarrow$ существует верхняя грань и более того существует конечный супремум $M = \\sup{\\N} < +\\infty.$ Тогда в силу второго пункта определения супрерума: $\\forall M^{'} < M$ найдётся натуральное число его больше. Но так как это верно $\\forall M^{'}$, то можем взять $M^{'} = M - 1. \\newline$ Тогда $\\exists N(M^{'}) \\in \\N$: $N(M^{'}) > M - 1 \\Rightarrow N(M^{'}) + 1 > M \\Rightarrow M$~---~не супремум. Противоречие."
+              },
+              {
+                "name": "лемма Кантора или принцип вложенных отрезков",
+                "formulation": "$$\\forall \\text{ вложенной } \\{ [a_{n}, b_{n}] \\}^{\\infty}_{n = 1} \\quad \\exists x \\in \\bigcap_{n = 1}^{\\infty} [a_{n}, b_{n}] \\Longleftrightarrow \\bigcap_{n = 1}^{\\infty} [a_{n}, b_{n}] \\neq \\varnothing$$",
+                "proof": "$\\forall n \\in \\N$ справедливы неравенства: $$-\\infty < a_{n} \\leq a_{n+1} \\leq b_{n+1} \\leq b_{n} < +\\infty.$$ Заметим следующий факт (*): $$ \\forall n, m \\in \\N \\hookrightarrow -\\infty < a_{n} \\leq b_{m} < +\\infty$$ Действительно, предположим $m \\geq n \\Rightarrow$ по индукции $b_{m} \\leq b_{n} \\Rightarrow a_{m} \\leq b_{m} \\leq b_{n}.$ Если же $m < n$, то $a_{m} \\leq a_{n} \\leq b_{n}.$ $A := \\{a_{1}, a_{2} \\dots , a_{n}, \\dots \\}$~---~ множество «левых» концов. $B := \\{b_{1}, b_{2} \\dots , b_{m}, \\dots \\}$~---~множество «правых» концов. Из (*) получаем, что $A$ расположенно «левее» $B \\Rightarrow \\exists c \\in \\R$: $a_{n} \\leq c \\leq b_{m} \\  \\forall n, m \\in \\N \\Rightarrow \\newline \\Rightarrow a_{n} \\leq c \\leq b_{n} \\quad \\forall n \\in \\N \\Rightarrow c \\in [a_{n}, b_{n}] \\  \\forall n \\in \\N \\Rightarrow c \\in \\displaystyle \\bigcap_{n = 1}^{\\infty} [a_{n}, b_{n}]$"
+              },
+              {
+                "name": "о единственности точки, принадлежащей всем отрезкам стягивающейся последовательности вложенных отрезков",
+                "formulation": "$$ \\exists ! x \\in \\bigcap_{n = 1}^{\\infty} [a_{n}, b_{n}]$$",
+                "proof": "Ранее было доказано, что пересечение не пусто \\bigg($\\displaystyle \\exists x \\in \\bigcap_{n = 1}^{\\infty} [a_{n}, b_{n}]$\\bigg). Тогда предположим, что $\\displaystyle \\exists x_{1}, x_{2} \\in \\bigcap_{n = 1}^{\\infty} [a_{n}, b_{n}] \\quad (x_{1} \\neq x_{2}).$ Так как $x_{1} \\neq x_{2} \\Rightarrow |x_{1} - x_{2}| > 0.$ Пусть $\\displaystyle |x_{1} - x_{2}| = \\frac{1}{M}.$ Но тогда по лемма Архимеда $\\displaystyle \\exists N \\in \\N$: $\\displaystyle N > M \\Rightarrow \\frac{1}{N} < |x_{1} - x_{2}| \\Rightarrow$ в силу того, что система отрезков стягивающаяся, то $\\exists [a_{m(N)}, b_{m(N)}]$ длина которого $\\displaystyle < \\frac{1}{N}$, но по предположению $x_{1}, x_{2}$ принадлежат всем отрезкам этой последовательности, в частности $\\displaystyle x_{1}, x_{2} \\in [a_{m(N)}, b_{m(N)}] \\Rightarrow |x_{1} - x_{2}| < \\frac{1}{N} \\Rightarrow |x_{1} - x_{2}| < |x_{1} - x_{2}|$~---~ противоречие. Получается $x_{1} = x_{2}.$"
+              },
+              {
+                "name": "3 принципа непрерывности числовой прямой",
+                "formulation": "Следующие утверждения эквивалентны: 1) Аксиома непрерывности. 2) Существование $\\inf$ и $\\sup$ у любого непустого множества. 3) Лемма Кантора о непустоте пересечения вложенной системы и лемма Архимеда.",
+                "proof": ""
+              }
+            ]
+          }
+        },
+        {
+          "error": "Model output doesn't fit required format"
+        },
+        {
+          "output": {
+            "definitions": [
+              {
+                "term": "Термин 1",
+                "definition": "Определение термина 1"
+              },
+              {
+                "term": "Термин 2",
+                "definition": "Определение термина 2"
+              }
+            ],
+            "theorems": [
+              {
+                "name": "Теорема 1",
+                "formulation": "Формулировка теоремы 1",
+                "proof": "Доказательство теоремы 1"
+              },
+              {
+                "name": "Теорема 2",
+                "formulation": "Формулировка теоремы 2",
+                "proof": "Доказательство теоремы 2"
+              }
+            ]
+          }
+        },
+        {
+          "output": {
+            "definitions": [
+              {
+                "term": "\\textit{сходящейся}",
+                "definition": "Последовательность $\\{ x_{n} \\}$ называется сходящейся, если она имеет конечный предел. В противном случае она называется расходящейся."
+              },
+              {
+                "term": "\\textit{ограниченной}",
+                "definition": "Последовательность $\\{ x_{n} \\}$ называется ограниченной, если множество значений её элементов ограничено. То есть $$ \\exists M \\in [0; +\\infty): \\  \\forall n \\in \\N \\hookrightarrow |x_{n}| \\leq M.$$"
+              },
+              {
+                "term": "\\textit{бесконечно большой}",
+                "definition": "Последовательность $\\{ x_{n} \\}$ называется бесконечно большой, если $\\exists \\lim\\limits_{n\\to \\infty} x_{n} = \\infty.$"
+              },
+              {
+                "term": "\\textit{бесконечно малой}",
+                "definition": "Последовательность $\\{ x_{n} \\}$ называется бесконечно малой, если её предел равен 0."
+              }
+            ],
+            "theorems": [
+              {
+                "name": "",
+                "formulation": "Если у последовательности $\\{ x_{n} \\}$ существует предел в $\\overline{\\R}$, то он единственен в $\\overline{\\R}$.",
+                "proof": "Предположим, что $\\exists a, b \\in \\overline{\\R} \\hookrightarrow a \\neq b, \\lim\\limits_{n\\to \\infty} x_{n} = a, \\lim\\limits_{n\\to \\infty} x_{n} = b$. Тогда по лемме о непересекающихся окрестностях $\\exists \\epsilon^{*} > 0$: $U_{\\epsilon^{*}} (a) \\cap U_{\\epsilon^{*}} (b) = \\varnothing$. Запишем определение предела: $$\\lim\\limits_{n\\to \\infty} x_{n} = a \\  \\Leftrightarrow \\   \\forall \\epsilon > 0 \\  \\exists N_{1} (\\epsilon) \\in \\N: \\  \\forall n \\geq N_{1} (\\epsilon) \\hookrightarrow |x_{n}| \\in U_{\\epsilon}(a)$$ $$\\lim\\limits_{n\\to \\infty} x_{n} = b \\  \\Leftrightarrow \\   \\forall \\epsilon > 0 \\  \\exists N_{2} (\\epsilon) \\in \\N: \\  \\forall n \\geq N_{2} (\\epsilon) \\hookrightarrow |x_{n}| \\in U_{\\epsilon}(b)$$ Подставим $\\epsilon = \\epsilon^{*}$. Следовательно, если мы возьмём $n > max \\{ N_{1} (\\epsilon^{*}), N_{2} (\\epsilon^{*} )\\}$, то $x_{n} \\in \\left(U_{\\epsilon^{*}} (a) \\cap U_{\\epsilon^{*}} (b)\\right) = \\varnothing$. Противоречие. Следовательно $a = b$."
+              },
+              {
+                "name": "",
+                "formulation": "Если последовательность $\\{ x_{n} \\}$ сходится, то она ограничена. Обратное неверно.",
+                "proof": "Пусть последовательность $\\{ x_{n} \\}$ сходится, значит у неё есть предел, назовём его $a$, и этот предел~---~число. Но тогда по определению $$ \\forall \\epsilon > 0 \\  \\exists N(\\epsilon) \\in \\N: \\forall n \\geq N(\\epsilon) \\hookrightarrow x_{n} \\in U_{\\epsilon} (a).$$ Тогда в частности $\\exists N = N(1)$: $\\forall n \\geq N(1) \\hookrightarrow |x_{n}| \\leq |a| + 1$. Поскольку вне хвоста конечное число элементов, то возьмём $M := max \\{ |x_{1}|, |x_{2}, \\ldots, |x_{N(1)}|, |a| + 1\\}$. Отсюда следует, $|x_{n}| \\leq M \\  \\forall n \\in \\N$. Контрпример: $\\{ x_{n} \\} = \\{ (-1)^{n} \\}^{\\infty}_{n = 1}$~---~ограничена, но не является сходящейся. Более того эта последовательность не имеет предела в $\\Hat{\\R}$."
+              },
+              {
+                "name": "Лемма о непересекающихся окрестностях",
+                "formulation": "$$ \\forall a, b \\in \\overline{\\R}, \\  a \\neq b \\  \\exists \\epsilon > 0: U_{\\epsilon} (a) \\cap U_{\\epsilon} (b) = \\varnothing.$$",
+                "proof": "Возможны 4 случая: \\begin{enumerate} \\item $a, b \\in \\R$, $-\\infty < a < b < +\\infty.$ Тогда возьмём $\\displaystyle \\epsilon = \\frac{b - a}{2}.$$\\displaystyle U_{\\epsilon} (a) = \\bigg( a - \\frac{b - a}{2}, \\  a + \\frac{b - a}{2} \\bigg) \\cap U_{\\epsilon} (b) = \\bigg( a + \\frac{b - a}{2}, \\  b + \\frac{b - a}{2} \\bigg) = \\varnothing.$$ \\item $-\\infty < a < b = +\\infty.$ Рассмотрим $\\displaystyle \\epsilon = \\frac{1}{|a| + 1}$ и заметим, что тогда $\\epsilon \\leq 1.$$\\displaystyle U_{\\epsilon} (b) = (|a| + 1, \\  +\\infty) \\cap U_{\\epsilon} (a) = \\bigg (a - \\frac{1}{|a| + 1}, \\  a + \\frac{1}{|a| + 1} \\bigg) = \\varnothing,$$ так как $U_{\\epsilon} (a) \\subset (a - 1, \\  a + 1)$, который не пересекается с $U_{\\epsilon} (b)$. \\newpage \\item $-\\infty = a < b < +\\infty$. Тогда действуем по аналогии с пунктом выше и рассматриваем $\\displaystyle \\epsilon = \\frac{1}{|b| + 1}.$ \\item $-\\infty = a < b = +\\infty.$ Рассмотрим $\\epsilon = 1.$$ U_{\\epsilon} (a) = (-\\infty, \\ -1) \\cap U_{\\epsilon} (b) = (1, \\ +\\infty) = \\varnothing. $$ \\end{enumerate}"
+              },
+              {
+                "name": "",
+                "formulation": "Произведение ограниченной и бесконечно малой последовательностей есть бесконечно малая последовательность. То есть, если $ \\{ x_{n} \\}$~---~ограниченная последовательность, а $ \\{ y_{n} \\}$ бесконечно малая, то $\\{ z_{n} \\} := \\{ x_{n} \\cdot y_{n}\\}^{\\infty}_{n = 1}$~---~бесконечно малая последовательность.",
+                "proof": "$$\\{ x_{n} \\} \\text{~---~ограниченная последовательность} \\Leftrightarrow \\exists M \\geq 0: \\forall n \\in \\N \\hookrightarrow |x_{n}| \\leq M.$$ $$\\{ y_{n} \\} \\text{~---~бесконечно малая последовательность} \\Leftrightarrow \\forall \\epsilon > 0 \\  \\exists N (\\epsilon) \\in \\N: \\  \\forall n \\geq N (\\epsilon) \\hookrightarrow |y_{n} - 0| < \\epsilon.$$ Тогда $\\forall \\epsilon > 0 \\  \\exists N (\\epsilon) \\in \\N$: $\\forall n \\geq N (\\epsilon) \\hookrightarrow |x_{n} \\cdot y_{n}| < M \\cdot \\epsilon$, а тогда по утверждению 2.1 $\\forall \\epsilon > 0 \\  \\exists \\Tilde{N} (\\epsilon) = N (\\epsilon), \\  M < 1$ или $\\Tilde{N} (\\epsilon) = N (\\epsilon / M), \\  M \\geq 1.$ Итого $\\forall n \\geq \\Tilde{N} (\\epsilon) \\hookrightarrow |x_{n} \\cdot y_{n}| < \\epsilon.$"
+              },
+              {
+                "name": "",
+                "formulation": "Сумма, разность и произведение бесконечно малых последовательностей есть бесконечно малая последовательность, то есть, если \\begin{equation*} \\begin{cases} \\{ x_{n} \\} \\text{~---~бесконечно малая}\\\\ \\{ y_{n} \\} \\text{~---~бесконечно малая}& \\end{cases} \\Rightarrow \\begin{cases} \\{ x_{n} \\pm y_{n} \\} \\text{~---~бесконечно малая}\\\\ \\{ x_{n} \\cdot y_{n} \\}\\  \\text{~---~бесконечно малая}& \\end{cases} \\end{equation*}",
+                "proof": "Докажем для суммы и разности. Тогда с учётом утверждения 2.1: $$\\forall \\epsilon > 0 \\  \\exists N_{1} (\\epsilon) \\in \\N: \\  \\forall n \\geq N_{1} (\\epsilon) \\hookrightarrow |x_{n}| \\in U_{\\epsilon / 2}(0)$$ $$\\forall \\epsilon > 0 \\  \\exists N_{2} (\\epsilon) \\in \\N: \\  \\forall n \\geq N_{2} (\\epsilon) \\hookrightarrow |y_{n}| \\in U_{\\epsilon / 2}(0)$$ Возьмём $N(\\epsilon) := max\\{ N_{1} (\\epsilon), N_{2} (\\epsilon) \\}$. Получим $$\\forall \\epsilon > 0 \\  \\exists N (\\epsilon) \\in \\N: \\  \\forall n \\geq N(\\epsilon) \\hookrightarrow x_{n} \\pm y_{n} \\in U_{\\epsilon}(0).$$ Тот факт, что $\\{ x_{n} \\cdot y_{n} \\}$~---~бесконечно малая следует из того, что $\\{ x_{n} \\}$ ограничена (а это следует из того, что она сходящаяся, так как она бесконечно малая) и $\\{ y_{n} \\}$~---~бесконечно малая, а по лемме 2.2 их произведение будет бесконечно малой последовательностью."
+              },
+              {
+                "name": "",
+                "formulation": "$$ \\lim\\limits_{n\\to \\infty} x_{n} = a \\in \\R \\Leftrightarrow \\text{последовательность } \\{a - x_{n} \\} \\text{~---~бесконечно малая}.$$",
+                "proof": ""
+              },
+              {
+                "name": "",
+                "formulation": "Пусть $a = \\lim\\limits_{n\\to \\infty} a_{n}$, $b = \\lim\\limits_{n\\to \\infty} b_{n}$, при этом $a, b \\in \\R$. Тогда $$ \\lim\\limits_{n\\to \\infty} (a_{n} \\pm b_{n}) = a \\pm b$$ $$ \\lim\\limits_{n\\to \\infty} (a_{n} \\cdot b_{n}) = a \\cdot b$$",
+                "proof": "Для суммы и разности нужно лишь заметить, что последовательность $\\{ (a_{n} \\pm b_{n}) - (a \\pm b)\\}^{\\infty}_{n = 1}$~---~бесконечно малая (можно убедиться, раскрыв скобки и воспользовавшись леммой 2.4). Покажем для произведения. Для этого достаточно доказать, что $\\{ (a_{n} b_{n}) - (a b)\\}^{\\infty}_{n = 1}$~---~бесконечно малая последовательность. Заметим, что $a_{n} b_{n} - a b = a_{n} b_{n} - a_{n} b + a_{n} b - ab = a_{n} \\cdot (b_{n} - b) + b \\cdot (a_{n} - a)$. Рассмотрим последовательность $\\{ a_{n} \\cdot (b_{n} - b) \\}^{\\infty}_{n = 1}$. Она бесконечно малая, как произведение ограниченной на бесконечно малую (так как $\\{ a_{n} \\}$~---~это бесконечно малая последовательность, то она является сходящейся, как следствие и ограниченной), а $\\{ b_{n} - b \\}$~---~бесконечно малая). Теперь рассмотрим последовательность $\\{ b \\cdot (a_{n} - a) \\}^{\\infty}_{n = 1}$ и стационарную последовательность, которая равна $b$ при всех $n \\in N$, тогда снова получаем произведение ограниченной последовательности на бесконечно малую ($\\{ b \\}$~---~ограничена, $\\{ a_{n}-a \\}$~---~бесконечно малая), что есть бесконечно малая последовательность. Итого получаем разность двух бесконечно малых последовательностей, которая есть бесконечно малая последовательность, что мы и хотели. Правило для произведения теперь доказано."
+              },
+              {
+                "name": "",
+                "formulation": "Пусть $x_{n} \\neq 0 \\  \\forall n \\in \\N$ и $\\exists \\lim\\limits_{n\\to \\infty} x_{n} = x$: $x \\in \\R, x \\neq 0$. Тогда $\\displaystyle \\exists \\lim\\limits_{n\\to \\infty} \\frac{1}{x_{n}} = \\frac{1}{x}$.",
+                "proof": "Покажем, что последовательность $\\{ \\frac{1}{x_{n}} \\}$~---~ограничена. Действительно, по определению предела получаем $$\\forall \\epsilon > 0 \\  \\exists N (\\epsilon) \\in \\N: \\forall n \\geq N \\hookrightarrow x_{n} \\in U_{\\epsilon} (x).$$ Возьмём $\\epsilon = \\frac{|x|}{2}$, то $\\exists N^{*} \\in \\N$: $\\forall n \\geq N^{*} \\hookrightarrow x_{n} \\in U_{\\frac{|x|}{2}} (x) \\Leftrightarrow x - \\frac{|x|}{2} < x_{n} < x + \\frac{|x|}{2}$.$$\\forall n \\geq N^{*} \\hookrightarrow |x_{n}| \\geq \\frac{|x|}{2} \\Rightarrow \\forall n \\geq N^{*} \\hookrightarrow \\frac{1}{|x_{n}|} \\leq \\frac{2}{|x|}.$$ Возьмём $M := max \\{ \\frac{1}{|x_{1}|}, \\frac{1}{|x_{2}|}, \\ldots, \\frac{1}{|x_{N^{*}}|}, \\frac{2}{|x|}\\} \\Rightarrow \\frac{1}{|x_{n}|} \\leq M \\  \\forall n \\in \\N \\Rightarrow$ последовательность $\\{ \\frac{1}{x_{n}} \\}$~---~ограничена. Рассмотрим $\\displaystyle \\frac{1}{x_{n}} - \\frac{1}{x} = \\frac{x - x_{n}}{x \\cdot x_{n}} = \\frac{1}{x \\cdot x_{n}} \\cdot (x - x_{n})$ и заметим, что $\\{ x - x_{n} \\}$~---~бесконечно малая последовательность, а $\\ \\displaystyle \\frac{1}{x \\cdot x_{n}}$~---~ограничена, так как $\\displaystyle \\left\\{{1 \\over x_{n}}\\right\\}$~---~ограничена. Итого получаем $\\displaystyle \\frac{1}{x_{n}} - \\frac{1}{x}$~---~бесконечно малая $\\displaystyle \\Leftrightarrow \\lim\\limits_{n\\to \\infty} \\frac{1}{x_{n}} = \\frac{1}{x}$."
+              },
+              {
+                "name": "",
+                "formulation": "\\hypertarget{corollemm2.6}{Пусть} $\\exists \\lim\\limits_{n\\to \\infty} y_{n} = y$, $y \\in \\R$; $\\exists \\lim\\limits_{n\\to \\infty} x_{n} = x$, $x \\in \\R$, $x \\neq 0$ и $x_{n} \\neq 0 \\  \\forall n \\in \\N$. Тогда $\\displaystyle \\exists \\lim\\limits_{n\\to \\infty} \\frac{y_{n}}{x_{n}} = \\frac{y}{x}$.",
+                "proof": "Достаточно воспользоваться предыдущей леммой и леммой о пределе произведения последовательностей и рассмотреть $\\displaystyle \\frac{y_{n}}{x_{n}}$, как $\\displaystyle y_{n} \\cdot \\frac{1}{x_{n}} .$"
+              },
+              {
+                "name": "",
+                "formulation": "Пусть $a \\in \\Hat{\\R}, c \\geq 1, \\   \\lim\\limits_{n\\to \\infty} x_{n} = a$. Cледующие условия эквивалентны: \\begin{enumerate} \\item $\\forall \\epsilon > 0 \\  \\exists N(\\epsilon) \\in \\N$: $\\forall n \\geq N(\\epsilon) \\hookrightarrow |x_{n}| \\in U_{\\epsilon}(a)$; \\item $\\forall \\epsilon > 0 \\  \\exists \\Tilde{N}(\\epsilon) \\in \\N$: $\\forall n \\geq \\Tilde{N}(\\epsilon) \\hookrightarrow |x_{n}| \\in U_{c\\epsilon}(a)$. \\end{enumerate}",
+                "proof": "Так как $c \\geq 1$, то $U_{\\epsilon} \\subset U_{c\\epsilon}$, откуда получаем импликацию $(1)\\to (2)$ (при $\\Tilde{N} (\\epsilon) = N(\\epsilon)$). Теперь докажем $(2)\\to (1)$. Так как для любого $\\epsilon$, то возьмём $\\epsilon / c$, то $\\forall \\epsilon > 0 \\  N(\\epsilon) := \\Tilde{N}(\\epsilon / c)$: $\\forall n \\geq \\Tilde{N}(\\epsilon / c) \\hookrightarrow x_{n} \\in U_{c \\epsilon / с} (a) = U_{\\epsilon} (a).$"
+              }
+            ]
+          }
+        },
+        {
+          "output": {
+            "definitions": [
+              {
+                "term": "нестрого возрастающая последовательность",
+                "definition": "Последовательность $\\{ x_{n} \\}$ называется нестрого возрастающей, если $\\forall n \\in \\N \\hookrightarrow x_{n + 1} \\geq x_{n}.$"
+              },
+              {
+                "term": "нестрого убывающая последовательность",
+                "definition": "Последовательность $\\{ x_{n} \\}$ называется нестрого убывающей, если $\\forall n \\in \\N \\hookrightarrow x_{n + 1} \\leq x_{n}.$"
+              },
+              {
+                "term": "строго возрастающая последовательность",
+                "definition": "Последовательность $\\{ x_{n} \\}$ называется строго возрастающей, если $\\forall n \\in \\N \\hookrightarrow x_{n + 1} > x_{n}.$"
+              },
+              {
+                "term": "строго убывающая последовательность",
+                "definition": "Последовательность $\\{ x_{n} \\}$ называется строго убывающей, если $\\forall n \\in \\N \\hookrightarrow x_{n + 1} < x_{n}.$"
+              },
+              {
+                "term": "монотонная последовательность",
+                "definition": "Последовательность $\\{ x_{n} \\}$ называется монотонной, если она нестрого возрастает или нестрого убывает."
+              },
+              {
+                "term": "строго монотонная последовательность",
+                "definition": "Последовательность $\\{ x_{n} \\}$ называется строго монотонной, если она строго возрастает или строго убывает."
+              },
+              {
+                "term": "подпоследовательность",
+                "definition": "Последовательность $\\{ y_{k} \\}^{\\infty}_{k = 1}$ называется подпоследовательностью последовательности $\\{ x_{n} \\}$, если существует строго возрастающая последовательность чисел $\\{ n_{k} \\}^{\\infty}_{k = 1} \\subset \\N$: $y_{k} = x_{n_{k}} \\ \\forall k \\in \\N.$"
+              },
+              {
+                "term": "частичный предел последовательности",
+                "definition": "Элемент $A \\in \\overline{\\R}$ называется частичным пределом последовательности $\\{ x_{n} \\}^{\\infty}_{n = 1}$, если $\\exists \\{ x_{n_{k}} \\}$ --- подпоследовательность последовательности $\\{ x_{n} \\}$: $\\lim\\limits_{k\\to \\infty} x_{n_{k}} = A .$"
+              }
+            ],
+            "theorems": [
+              {
+                "name": "Лемма",
+                "formulation": "Пусть есть два элемента $A, B \\in \\overline{\\R}$ и две числовые последовательности $\\{ x_{n} \\}$, $\\{ y_{n} \\}$ такие, что: $\\exists \\lim\\limits_{n\\to \\infty} x_{n} = A, \\quad \\exists \\lim\\limits_{n\\to \\infty} y_{n} = B, \\quad A < B.$ Тогда $\\exists N \\in \\N$: $\\forall n \\geq N \\hookrightarrow x_{n} < y_{n}.$",
+                "proof": "По лемме о непересекающихся окрестностях $\\exists \\epsilon^{*} > 0: U_{\\epsilon^{*}} (A) \\cap U_{\\epsilon^{*}} (B) = \\varnothing.$ А так как $A < B$, то $\\forall x \\in U_{\\epsilon^{*}} (A)$ и $\\forall y \\in U_{\\epsilon^{*}} (B) \\hookrightarrow x < y.$ Запишем определение предела: $\\forall \\epsilon > 0 \\  \\exists N_{1} (\\epsilon) \\in \\N: \\forall n \\geq N_{1} (\\epsilon) \\hookrightarrow x_{n} \\in U_{\\epsilon} (A);$ $\\forall \\epsilon > 0 \\  \\exists N_{2} (\\epsilon) \\in \\N: \\forall n \\geq N_{2} (\\epsilon) \\hookrightarrow y_{n} \\in U_{\\epsilon} (B).$ Возьмём $N := max \\{ N_{1} (\\epsilon^{*}), N_{2} (\\epsilon^{*})\\} \\Rightarrow \\forall n \\geq N \\hookrightarrow x_{n} \\in U_{\\epsilon^{*}} (A)$ и $y_{n} \\in U_{\\epsilon^{*}} (B) \\Rightarrow x_{n} < y_{n},$ что нам и надо было."
+              },
+              {
+                "name": "Теорема о предельном переходе в неравенстве",
+                "formulation": "Пусть $\\exists \\lim\\limits_{n\\to \\infty} x_{n} = A, \\  A \\in \\overline{\\R}$ и $\\exists \\lim\\limits_{n\\to \\infty} y_{n} = B, \\  B \\in \\overline{\\R}$. Пусть $\\exists N \\in \\N$: $x_{n} \\leq y_{n} \\  \\forall n \\geq N$. Тогда $A \\leq B$.",
+                "proof": "Предположим $A$ > $B$. Тогда по только что доказанной выше лемме $\\exists N^{*}$: $\\forall n \\geq N^{*} \\hookrightarrow x_{n} > y_{n}$. Положим $\\Tilde{N} := max \\{ N, N^{*} \\}$. Тогда $\\forall n \\geq \\Tilde{N} \\hookrightarrow x_{n} \\leq y_{n}$ (по условию) и $x_{n} > y_{n}$ (по предположению), а такого быть не может, то есть предположение было неверно."
+              },
+              {
+                "name": "Следствие",
+                "formulation": "Если $\\forall n \\in \\N \\hookrightarrow x_{n} \\geq a$, $a \\in \\R$ и $\\exists \\lim\\limits_{n\\to \\infty} x_{n} = A, \\  A \\in \\overline{\\R}$, то $A \\geq a.$",
+                "proof": "Положим $y := a \\  \\forall n \\in \\N$ и применим предыдущее утверждение."
+              },
+              {
+                "name": "Теорема о трёх последовательностях или о двух миллиционерах",
+                "formulation": "Пусть $\\{ a_{n} \\}$, $\\{ b_{n} \\}$, $\\{ c_{n} \\}$ --- числовые последовательности. Пусть $\\exists \\lim\\limits_{n\\to \\infty} a_{n} = \\lim\\limits_{n\\to \\infty} b_{n} = c, \\  c \\in \\R$. Пусть $\\exists N \\in \\N$: $\\forall n \\geq N \\hookrightarrow a_{n} \\leq c_{n} \\leq b_{n}.$ Тогда $\\exists \\lim\\limits_{n\\to \\infty} c_{n} = c$.",
+                "proof": "Распишем определение предела: $ \\lim\\limits_{n\\to \\infty} a_{n} = c \\Leftrightarrow \\forall \\epsilon > 0 \\  \\exists N_{1} (\\epsilon) \\in \\N: \\forall n \\geq N_{1} (\\epsilon) \\hookrightarrow a_{n} \\in (c - \\epsilon, c + \\epsilon);$ $ \\lim\\limits_{n\\to \\infty} b_{n} = c \\Leftrightarrow \\forall \\epsilon > 0 \\  \\exists N_{2} (\\epsilon) \\in \\N: \\forall n \\geq N_{2} (\\epsilon) \\hookrightarrow b_{n} \\in (c - \\epsilon, c + \\epsilon);$ $\\forall \\epsilon > 0 \\  \\exists \\Tilde{N} (\\epsilon) := max \\{ N_{1} (\\epsilon), N_{2} (\\epsilon), N \\} \\in \\N: \\forall n \\geq \\Tilde{N} (\\epsilon) \\hookrightarrow \\begin{cases} a_{n} \\in (c - \\epsilon, c + \\epsilon); \\\\ b_{n} \\in (c - \\epsilon, c + \\epsilon); \\end{cases} \\Rightarrow $ $\\Rightarrow c_{n} \\in (c - \\epsilon, c + \\epsilon) \\Leftrightarrow \\exists \\lim\\limits_{n\\to \\infty} c_{n} = c. $"
+              },
+              {
+                "name": "Теорема",
+                "formulation": "Пусть $\\exists \\lim\\limits_{n\\to \\infty} x_{n} = + \\infty$ и $\\exists N \\in \\N$: $\\forall n \\geq N \\hookrightarrow y_{n} \\geq x_{n}$. Тогда $\\exists \\lim\\limits_{n\\to \\infty} y_{n} = + \\infty$. Аналогично для $- \\infty$.",
+                "proof": "Вновь распишем определение предела: $ \\forall \\epsilon > 0 \\  \\exists N (\\epsilon) \\in \\N: \\forall n \\geq N (\\epsilon) \\hookrightarrow x_{n} > \\frac{1}{\\epsilon}.$ $ \\text{Но тогда } \\forall \\epsilon > 0 \\  \\exists \\Tilde{N} := max \\{ N (\\epsilon), N \\}: \\forall n \\geq \\Tilde{N} (\\epsilon) \\hookrightarrow y_{n} \\geq x_{n} > \\frac{1}{\\epsilon} \\Rightarrow \\lim\\limits_{n\\to \\infty} y_{n} = + \\infty.$"
+              },
+              {
+                "name": "Теорема Вейерштрасса",
+                "formulation": "Любая монотонная последовательность $\\{ x_{n} \\}$ имеет предел в $\\overline{\\R}$. При этом если $\\{ x_{n} \\}$ нестрого возрастает, то $\\exists \\lim\\limits_{n\\to \\infty} x_{n} = \\sup \\{ x_{n} \\}$. Соответственно, если $\\{ x_{n} \\}$ нестрого убывает, то $\\exists \\lim\\limits_{n\\to \\infty} x_{n} = \\inf \\{ x_{n} \\}$.",
+                "proof": "Докажем для нестрого возрастающей последовательности. Для нестрого убывающей аналогично. Сначала рассмотрим случай ограниченной сверху последовательности. По теореме о существовании супремума $\\exists M = \\sup \\{ x_{n} \\}$. Покажем, что $\\lim\\limits_{n\\to \\infty} x_{n} = M$. В силу второго пункта определения супремума $\\forall \\epsilon > 0 \\  \\exists N \\in \\N$: $x_{N} > M - \\epsilon$. Отсюда в силу возрастания последовательности $\\{ x_{n} \\}$ имеем $\\forall \\epsilon > 0 \\  \\exists N \\in \\N$: $\\forall n \\geq N \\hookrightarrow x_{n} \\geq x_{N} > M - \\epsilon$. В силу первого пункта определения супремума $\\forall n \\in \\N \\hookrightarrow x_{n} \\leq M$. Поэтому $\\forall \\epsilon > 0  \\  \\exists N \\in \\N$: $\\forall n \\geq N \\hookrightarrow x_{n} \\in U_{\\epsilon} (M)$, то есть $\\lim\\limits_{n\\to \\infty } x_{n} = M$. Теперь рассмотрим теперь случай, когда последовательность $\\{ x_{n} \\}$ неограничена сверху. Тогда $\\forall \\epsilon > 0 \\  \\exists N$: $x_{N} > \\frac{1}{\\epsilon}$. Отсюда в силу возрастания последовательности $\\{ x_{n} \\}$ имеем $\\forall \\epsilon > 0 \\  \\exists N$: $\\forall n \\geq N \\hookrightarrow x_{n} \\geq x_{N} > \\frac{1}{\\epsilon}$, то есть $x_{n} \\in U_{\\epsilon} (+ \\infty)$, а значит $\\lim\\limits_{n\\to \\infty} x_{n} = +\\infty.$"
+              },
+              {
+                "name": "Критерий частичного предела",
+                "formulation": "Пусть $\\{ x_{n} \\}$ --- числовая последовательность. Пусть $A \\in \\overline{\\R}$. Следующие условия эквивалентны: $\\begin{enumerate} \\item $A$ является частичным пределом последовательности $\\{ x_{n} \\}$; \\item $\\forall \\epsilon > 0$ в $U_{\\epsilon} (A)$ содержатся значения бесконечного количества элементов последовательности $\\{ x_{n} \\}$; \\item  $\\forall \\epsilon > 0 \\  \\forall N \\in \\N \\  \\exists n (\\epsilon, N) \\geq N$: $x_{n} \\in U_{\\epsilon} (A_{).$ \\end{enumerate}$",
+                "proof": "Доказывать будем в следующем порядке: $(1) \\to (2)$, $(2) \\to (3)$, $ (3) \\to (1)$. $\\underline{Шаг 1.} $ Пусть $A$ --- частичный предел $\\Rightarrow$ существует строго возрастающая последовательность $\\{ n_{k} \\}^{\\infty}_{k = 1} \\subset \\N$: $\\lim\\limits_{k\\to \\infty} x_{n_{k}} = A.$ Это равносильно тому, что $\\forall \\epsilon > 0 \\  \\exists K (\\epsilon) \\in \\N$: $\\forall k \\geq K (\\epsilon) \\hookrightarrow x_{n_{k}} \\in U_{\\epsilon} (A)$. Но так как $\\forall \\epsilon > 0$ в силу леммы Архимеда существует бесконечно много чисел $k \\in \\N$ удовлетворяющих неравенству $k \\geq K (\\epsilon)$, то приведётся, в $U_{\\epsilon} (A)$ содержатся значения бесконечного количества элементов последовательности $\\{ x_{n} \\}$. $\\underline{Шаг 2.} $ Пусть выполнено (2). Фиксируем произвольное $\\epsilon > 0$, следовательно в $U_{\\epsilon} (A)$ содержатся значения бесконечного количества элементов последовательности $\\{ x_{n} \\}$. Пусть $I (\\epsilon)$ --- это такие натуральные индексы, что $\\{ x_{n} \\in U_{\\epsilon} (A) \\  \\forall n \\in I (\\epsilon) \\}$. А так как $I (\\epsilon)$ бесконечно по условию (2), то $\\forall N \\in \\N \\  \\exists n \\in I (\\epsilon)$: $n \\geq N$. Можно доказать, предположив противное и получив противоречие с тем, что $I (\\epsilon)$ бесконечно. А так как $\\epsilon > 0$ было выбрано произвольно, получаем, что $\\forall \\epsilon > 0 \\  \\forall N \\in \\N \\  \\exists n \\geq N$: $x_{n} \\in U_{\\epsilon} (A).$ $\\underline{Шаг 3.} $ Пусть выполнено (3). Покажем, что выполнено (1). Построим подпоследовательность $\\{ x_{n_{k}} \\}$ такую, что $\\exists \\lim\\limits_{k\\to \\infty} x_{n_{k}} = A$. Cтроить будем индуктивно. Определим $n_{1} = n(1, 1)$. При $\\epsilon = \\frac{1}{2} \\ N = 1 + n_{1} \\  \\ \\exists n \\geq 1 + n_{1}$: $x_{n} \\in U_{1/2} (A)$. Если построены $n_{1} (= 1) \\leq \\ldots \\leq n_{k}$: $x_{n_{i}} \\in U_{1/i} (A)$, то выберем $n_{k + 1} \\left(\\frac{1}{k + 1}, n_{k} + 1\\right) \\Rightarrow x_{n_{k + 1}} \\in U_{\\frac{1}{k + 1}} (A)$. В итоге $\\forall k \\in \\N \\  \\exists n_{k} = n \\left( \\frac{1}{k}, n_{k - 1} + 1\\right)$: $x_{n_{k}} \\in U_{1 / k} (A) \\Rightarrow \\forall k \\in \\N \\  \\exists n_{k} \\in \\N$: $\\forall j \\geq k \\hookrightarrow x_{n_{j}} \\in U_{1/k} (A)$. Получаем, что $\\forall \\epsilon > 0 \\  \\exists K (\\epsilon) = \\left[ \\frac{1}{\\epsilon} \\right] + 1$: $\\forall k \\geq K (\\epsilon) \\hookrightarrow x_{n_{k}} \\in U_{\\epsilon} (A).$"
+              },
+              {
+                "name": "Теорема Больцано-Вейерштрасса",
+                "formulation": "Пусть $\\{ x_{n} \\}$ --- ограниченная числовая последовательность. Тогда она имеет хотя бы один конечный частичный предел.",
+                "proof": "Поскольку $\\{ x_{n} \\}$ --- ограниченная числовая последовательность, то найдётся такое $M \\geq 0$, что $ |x_{n}| \\leq M \\  \\forall n \\in \\N.$ Считаем далее, что $M \\neq 0$, так как в данном случае доказательно тривиально (получается стационарная последовательность, предел которой равен 0).  Разделим отрезок $I^{1} := [-M, M]$ пополам и через $I^{2}$ обозначим ту половину, в которой находятся значения бесконечного количества элементов последовательности. Такая обязательно найдётся, потому что в противном случае в обеих половинах содержались бы значения лишь конечного числа элементов последовательности $\\{ x_{n} \\}$, но тогда и на всём отрезке $I^{1}$ содержались бы значения лишь конечного числа элементов, а такого быть не может, так как $\\{ x_{n} \\} \\subset I^{1}$. Небольшое замечание: если в обеих половинах оказалось бесконечное число элементов последовательности, то берём любую. Далее рассуждаем по индукции. Базу мы уже сделали, теперь сделаем шаг. Предположим при некотором $k \\in \\N$, $k \\geq 2$ мы методом половинного деления построили последовательность отрезков $I^{1} \\supset I^{2} \\supset \\ldots \\supset I^{k}$: $\\forall j \\in \\{ 1, \\ldots, k \\}$ отрезок $I^{j}$ содержит значения бесконечного количества элементов последовательности $\\{ x_{n} \\}$. Теперь разделим $I^{k + 1}$ на два конгруэнтных отрезка и выберем ту половинку, в которой содержатся значения бесконечного значения элементов последовательности $\\{ x_{n} \\}$. Такая найдётся, потому что в противном случае получится, что и весь отрезок $I^{k}$ содержит лишь конечное число элементов последовательности, что не так по построению. Получаем бесконечную последовательность вложенных отрезков $I^{1} \\supset \\ldots \\supset I^{k} \\supset \\ldots$, которая является стягивающейся, поскольку $ l (I^{k}) = \\frac{l (I^{1})}{2^{k - 1}}, \\quad 2^{k} > k \\  \\forall k \\in \\N.$ Следовательно, $\\displaystyle \\exists x^{*} = \\bigcap_{k = 1}^{\\infty} I^{k}$. Покажем, что $x^{*}$ --- частичный предел. В силу критерия частичного предела достаточно доказать, что $\\forall \\epsilon > 0$ в $U_{\\epsilon} (x^{*})$ содержатся значения бесконечного количества элементов последовательности $\\{ x_{n} \\}$. Действительно, из определения предела и того, что $x^{*} \\in I^{k} \\  \\forall k \\in \\N \\Rightarrow \\exists k (\\epsilon)$: $x^{*} \\in I^{k (\\epsilon)} \\subset U_{\\epsilon} (x^{*})$. Следовательно, по построению получаем, что $I^{k (\\epsilon)}$ содержатся бесконечно много значений элементов последовательности, а значит и в $U_{\\epsilon} (x^{*}).$ Получаем, что хотя бы один частичный предел существует."
+              }
+            ]
+          }
+        },
+        {
+          "error": "Failed to parse tool arguments from chat model response. Text: \"[]\". SyntaxError: Unexpected non-whitespace character after JSON at position 29355 (line 1 column 29356)\n\nTroubleshooting URL: https://js.langchain.com/docs/troubleshooting/errors/OUTPUT_PARSING_FAILURE/\n"
+        },
+        {
+          "output": {
+            "definitions": [
+              {
+                "term": "Термин 1",
+                "definition": "Определение термина 1"
+              },
+              {
+                "term": "Термин 2",
+                "definition": "Определение термина 2"
+              }
+            ],
+            "theorems": [
+              {
+                "name": "Теорема 1",
+                "formulation": "Формулировка теоремы 1",
+                "proof": "Доказательство теоремы 1"
+              },
+              {
+                "name": "Теорема 2",
+                "formulation": "Формулировка теоремы 2",
+                "proof": "Доказательство теоремы 2"
+              }
+            ]
+          }
+        },
+        {
+          "error": "Failed to parse tool arguments from chat model response. Text: \"[]\". SyntaxError: Unexpected non-whitespace character after JSON at position 20752 (line 1 column 20753)\n\nTroubleshooting URL: https://js.langchain.com/docs/troubleshooting/errors/OUTPUT_PARSING_FAILURE/\n"
+        },
+        {
+          "output": {
+            "definitions": [
+              {
+                "term": "Условие Коши для $f$ в точке $x_0$",
+                "definition": "$\\forall \\epsilon>0 \\ \\exists \\delta(\\epsilon) \\in (0, \\delta_{0}]: \\ \\  \\forall x_{1}, x_{2} \\in \\mathring{U}_{\\delta (\\epsilon)} (x_0) \\hookrightarrow | f(x_1) - f(x_2)| < \\epsilon$"
+              }
+            ],
+            "theorems": [
+              {
+                "name": "Критерий Коши",
+                "formulation": "Пусть $f$: $\\mathring{U}_{\\delta_0} (x_0)  \\mapsto \\R.$ Следующие условия эквивалентны: $f$ удовлетворяет условию Коши в точке $x_0$; $\\exists \\lim\\limits_{x\\to x_{0}} f (x) = a,$ $a \\in \\R$.",
+                "proof": "Докажем сначала  $(2) \\to (1)$. Пусть $\\exists \\lim\\limits_{x\\to x_{0}} f (x) = a,$ $a \\in \\R.$ $$ \\forall \\epsilon > 0 \\ \\exists \\delta(\\epsilon) \\in [0, \\delta_0] \\ \\ \\forall x \\in  \\mathring{U}_{\\delta_0} (x_0) \\hookrightarrow | f(x) - a| < \\frac{\\epsilon}{2} \\Rightarrow $$ $$ \\Rightarrow \\forall \\epsilon > 0 \\ \\exists \\delta(\\epsilon) \\in [0, \\delta_0] \\ \\ \\forall x_{1}, x_{2} \\in  \\mathring{U}_{\\delta_0} (x_0) \\hookrightarrow \\begin{cases} | f(x_1) - a| < \\frac{\\epsilon}{2}, \\\\ | f(x_2) - a| < \\frac{\\epsilon}{2} \\end{cases} $$ По теореме о неравенстве треугольника имеем: $$ |f(x_1) - f(x_2)| \\leq | f(x_1) - a| + | f(x_2) - a| < \\frac{\\epsilon}{2} + \\frac{\\epsilon}{2} < \\epsilon $$ Итого, $$ \\forall \\epsilon>0 \\ \\exists \\delta(\\epsilon) \\in (0, \\delta_{0}]: \\ \\  \\forall x_{1}, x_{2} \\in \\mathring{U}_{\\delta_0} (x_0) \\hookrightarrow | f(x_1) - f(x_2)| < \\epsilon, $$ Следовательно, выполнено условие Коши. Теперь докажем $(1) \\to (2)$. Поскольку определение предела по Коши и по Гейне эквивалентны, нам достаточно доказать, что из условия Коши следует существование конечного предела по Гейне. Зафиксируем произвольную последовательность Гейне в точке $x_0$: $$ \\{x_n\\}: \\begin{cases} x_n \\to x_0,\\  n \\to \\infty\\\\ x_n \\neq x_0 \\end{cases} $$ $$ \\text{Тогда }\\ \\forall \\delta > 0 \\ \\exists N(\\delta) \\in \\N: \\ \\forall n \\geq N(\\delta) \\hookrightarrow  x_n \\in \\mathring{U}_{\\delta} (x_0) \\Rightarrow $$ $$ \\Rightarrow \\forall \\epsilon > 0  \\ \\exists N(\\delta(\\epsilon)): \\  \\ \\forall n,\\  m > N(\\delta(\\epsilon)) \\hookrightarrow |f(x_n) - f(x_m)| < \\epsilon. $$ Следовательно, получилось условие Коши для $\\{f(x_n)\\}$, значит $$ \\exists  \\lim\\limits_{n\\to \\infty} f (x_n) = A (\\{ x_{n} \\}), \\ A (\\{ x_{n}\\}) \\in \\R. $$ В итоге, для любой $\\{ x_n \\}$~---~ произвольной последовательности Гейне в точке $x_0$: $$ \\exists  \\lim\\limits_{n\\to \\infty} f (x_n) = A (\\{ x_{n} \\}), \\ A (\\{ x_{n} \\} \\in \\R. $$ В силу \\hyperlink{lemm4.3}{леммы 4.3} $A (\\{ x_{n} \\})$ не зависит от выбора $\\{ x_{n} \\}$, то есть $\\exists A\\in \\R$: $\\forall \\{x_n\\}$ - последовательности Гейне в точке $x_0$ $ \\hookrightarrow \\lim\\limits_{n\\to \\infty} f(x_n) = A \\in \\R$. Значит, $\\exists \\lim\\limits_{x\\to x_0} f (x) = A. $"
+              },
+              {
+                "name": "Принцип локализации",
+                "formulation": "Пусть, $\\exists \\overline{\\delta} \\in (0, +\\infty)$: $f(x) = g(x) \\ \\forall x\\in \\mathring{U}_{\\overline{\\delta}} (x_0)$. Тогда $\\exists \\lim\\limits_{x\\to x_0} f (x) \\Leftrightarrow \\exists \\lim\\limits_{x\\to x_0} g (x).$ И если они существуют, то равны.",
+                "proof": "Очевидно расписывается по определению предела."
+              },
+              {
+                "name": "Теорема Вейерштрасса",
+                "formulation": "Пусть $-\\infty < a < b < +\\infty$. Пусть $f$ нестрого возрастает на $(a, b)$. Тогда $$ \\exists  \\lim\\limits_{x\\to b -0} f (x) = \\underset{x \\in (a, b)}{\\sup} f(x)  \\ \\quad (1)$$ $$ \\exists \\lim\\limits_{x\\to a +0} f (x) = \\underset{x \\in (a, b)}{\\inf} f(x) \\ \\quad (2)$$",
+                "proof": "Докажем \\hyperlink{prop4.1-2}{(1)}, так как \\hyperlink{prop4.1-2}{(2)} аналогично. Пусть $$ E = \\{f(x): x\\in (a, b)\\}. $$ $$ \\text{Поскольку } \\exists \\sup E = M \\Rightarrow \\forall \\epsilon > 0 \\ \\exists x_{\\epsilon} \\in (a, b): \\ f(x_{\\epsilon}) \\in U_{\\epsilon}(M), $$ но $f$ нестрого возрастает на $(a,  b) \\Rightarrow f(x)\\in U_{\\epsilon}(M) \\ \\ \\forall x\\in [x_{\\epsilon}, b).$ Действительно, если М~---~число, $M - \\epsilon < f(x_\\epsilon) \\leq f(x) \\leq M$. Если $M = +\\infty$, $\\frac{1}{\\epsilon} < f(x) \\  \\forall x \\in [x_{\\epsilon}, b) \\Rightarrow f(x) \\in U_\\epsilon(+\\infty)$. Но тогда $\\forall \\epsilon > 0 \\ \\exists \\delta(\\epsilon) = b- x_{\\epsilon}$: $\\ \\forall x \\in \\mathring{U}^{-}_{\\delta(\\epsilon)} (b) \\hookrightarrow f(x)\\in U_{\\epsilon}(M) \\Rightarrow \\lim\\limits_{x\\to b - 0} f (x) = M.$"
+              },
+              {
+                "name": "Арифметические операции с пределами функций",
+                "formulation": "Пусть $X \\neq \\varnothing$, $x_{0}$~---~предельная точка. Пусть $\\begin{cases} \\exists \\lim\\limits_{\\underset{x \\in X}{x\\to x_0}} f_{1} (x) = a_{1} \\in \\R, \\\\ \\exists \\lim\\limits_{\\underset{x \\in X}{x\\to x_0}} f_{2} (x) = a_{2} \\in \\R, \\\\ \\end{cases}$ Тогда 1. $\\lim\\limits_{\\underset{x \\in X}{x\\to x_0}} \\left(f_{1} (x) \\pm  f_{2} (x)\\right) = a_{1} \\pm a_{2}$;  2. $\\lim\\limits_{\\underset{x \\in X}{x\\to x_0}} \\left(f_{1} (x) \\cdot f_{2} (x) \\right) = a_{1} \\cdot a_{2}$. ",
+                "proof": "Для доказательства достаточно проверить условие определения предела по Гейне. То есть возьмём проивольную $\\{x_{n}\\}$~---~последовательность Гейне в точке $x_{0}$. Тогда $$ \\exists \\lim\\limits_{n\\to \\infty} \\big(f_{1}(x_{n}) \\pm f_{2}(x_{n})\\big) = a_{1} \\pm a_{2} $$ $$ \\exists \\lim\\limits_{n\\to \\infty} \\big(f_{1}(x_{n}) \\cdot f_{2}(x_{n})\\big) = a_{1} \\cdot a_{2} $$ Так как последовательность Гейне выбиралась произвольно, то в силу эквивалентности определения по Коши и по Гейне получили утверждение теоремы."
+              },
+              {
+                "name": "Лемма о сохранении знака",
+                "formulation": "Пусть $f: X \\mapsto \\R,$ $x_{0}$~---~предельная точка $X$. Пусть $\\exists \\lim\\limits_{\\underset{x \\in X}{x\\to x_0}} f(x) = a \\neq 0$. $a \\in \\R$ (для удобства). Тогда $ \\exists \\overllimitsine{\\delta} > 0: \\ \\ \\forall x\\in  \\mathring{U}_{\\overline{\\delta}}(x_{0}) \\cap X \\hookrightarrow \\begin{cases} f(x) \\neq 0, \\\\ \\text{sign}( f(x)) = \\text{sign} (a). \\end{cases}$",
+                "proof": "Запишем определение предела: $$\\forall\\epsilon > 0: \\ \\exists\\delta(\\epsilon) > 0: \\forall x \\in \\mathring{U}_{\\overline{\\delta}}(x_{0}) \\cap X \\hookrightarrow |f(x) - a| < \\epsilon $$ Поскольку $\\forall \\epsilon$, то возьмём $\\epsilon = \\frac{|a|}{2}$. Тогда $$ \\overline{\\delta} = \\delta\\Bigr(\\cfrac{|a|}{2}\\Bigl) > 0 \\Rightarrow \\forall x \\in \\mathring{U}_{\\overline{\\delta}}(x_{0}) \\cap X \\hookrightarrow |f(x) - a| < \\cfrac{|a|}{2} \\Leftrightarrow a - \\cfrac{|a|}{2} < f(x) < \\cfrac{|a|}{2} + a. $$ То есть знак сохраняется."
+              },
+              {
+                "name": "Теорема о трёх функциях или о двух милиционерах",
+                "formulation": "Пусть $f, g, h: X \\mapsto \\R, x_{0}$~---~предельная точка для $X$. Пусть $\\exists \\lim\\limits_{\\underset{x \\in X}{x\\to x_0}} f(x) = \\lim\\limits_{\\underset{x \\in X}{x\\to x_0}} g(x) = A, \\ A \\in \\overline{\\R}.$ Пусть $f(x) \\leq h(x) \\leq g(x) \\ \\ \\forall x\\in X.$ Тогда $\\exists \\lim\\limits_{\\underset{x \\in X}{x\\to x_0}} h(x) = A.$",
+                "proof": "Достаточно \\hyperlink{thm2.4}{теоремы о трёх последовательностях} и \\hyperlink{thm4.3}{эквивалентности по Коши и по Гейне}."
+              },
+              {
+                "name": "Теорема о предельном переходе в неравестве",
+                "formulation": "Пусть $f, g: X \\mapsto \\R, x_{0}$~---~предельная точка для $X$. Пусть $ \\begin{cases}   \\exists \\lim\\limits_{\\underset{x \\in X}{x\\to x_0}} f(x) = A \\in \\overline{\\R};\\\\ \\exists \\lim\\limits_{\\underset{x \\in X}{x\\to x_0}} g(x) = B \\in \\overline{\\R}. \\end{cases}$ Тогда, если $ f(x) \\leq g(x) \\ \\ \\forall x\\in X \\Rightarrow \\ A \\leq B.$",
+                "proof": "Достаточно \\hyperlink{thm2.3}{теоремы о предельном переходе в неравенство} и \\hyperlink{thm4.3}{эквивалентности по Коши и по Гейне}."
+              }
+            ]
+          }
+        },
+        {
+          "output": {
+            "definitions": [
+              {
+                "term": "\\textit{непрерывной в точке $x_{0}$}",
+                "definition": "Функция $f$ называется \\textit{непрерывной в точке $x_{0}$}, если $\\exists \\lim\\limits_{x \\to x_{0}} f(x) = f(x_{0}) \\Leftrightarrow$ $$\n    \\Leftrightarrow\n     \\forall \\epsilon > 0 \\ \\exists \\delta(\\epsilon) \\in (0, \\delta_{0}]: \\ \\forall x\\in U_{\\delta(\\epsilon)}(x_{0}) \\hookrightarrow |f(x) - f(x_{0})| < \\epsilon.\n    $"
+              },
+              {
+                "term": "\\textit{разрывной в точке $x_0$}",
+                "definition": "Функция $f: U_{\\delta_{0}}(x_{0}) \\mapsto \\R$, не являющаяся непрерывной в точке $x_0$, называется \\textit{разрывной в точке $x_0$}."
+              },
+              {
+                "term": "\\textit{точкой устранимого разрыва}",
+                "definition": "Точка $x_0$ называется \\textit{точкой устранимого разрыва}, если: $$ \\begin{cases}\n            \\exists \\lim\\limits_{x \\to x_{0}} f(x) \\in \\R,\\\\\n            \\lim\\limits_{x \\to x_{0}} f(x) \\neq f(x_{0}).\n    \\end{cases}$$"
+              },
+              {
+                "term": "\\textit{точкой разрыва первого рода}",
+                "definition": "Точка $x_0$ называется \\textit{точкой разрыва первого рода}, если: $$\n    \\begin{cases}\n        \\exists \\lim\\limits_{x \\to x_{0} +0} f(x) \\in \\R,\\\\\n        \\exists \\lim\\limits_{x \\to x_{0} -0} f(x) \\in \\R,\\\\\n        \\lim\\limits_{x \\to x_{0} +0} f(x) \\neq \\lim\\limits_{x \\to x_{0} -0} f(x).\n    \\end{cases}\n    $"
+              },
+              {
+                "term": "\\textit{точкой разрыва второго рода}",
+                "definition": "Точка $x_0$ называется \\textit{точкой разрыва второго рода}, если хотя бы один из односторонних пределов не существует, либо бесконечен."
+              },
+              {
+                "term": "\\textit{непрерывна в точке $x_{0} \\in X$ по множеству $X$}",
+                "definition": "Будем говорить, что $f$: $X\\mapsto \\R$ \\textit{непрерывна в точке $x_{0} \\in X$ по множеству $X$}, если $$\n    \\left[\n        \\begin{gathered}\n            x_{0} \\textrm{~---~ изолированная точка} \\ X, \\\\\n            \\exists \\lim\\limits_{\\underset{x \\in X}{x\\to x_{0}}}f(x) = f(x_{0}). \\hfill\n        \\end{gathered}\n    \\right.\n    $"
+              },
+              {
+                "term": "\\textit{непрерывной на $X$}",
+                "definition": "Функция $f$: $X\\in \\R$ называется \\textit{непрерывной на $X$}, если она непрерывна в каждой точке $x_{0} \\in X$ по множеству $X$."
+              },
+              {
+                "term": "\\textit{полунепрерывной сверху в точке $x_{0}$ по множеству $X$}",
+                "definition": "Функция $f$: $X \\mapsto \\R$ называется \\textit{полунепрерывной сверху в точке $x_{0}$ по множеству $X$}, если $$\n    \\left[ \n    \\begin{gathered}\n        x_{0} \\textrm{~---~ изолирована,} \\\\\n        \\overline{\\lim\\limits_{\\underset{x \\in X}{x \\to x_{0}}}} f(x) \\leq f(x_{0}).\n    \\end{gathered}\n    \\right.$$"
+              },
+              {
+                "term": "\\textit{полунепрерывной снизу в точке $x_{0}$ по множеству $X$}",
+                "definition": "Функция $f$: $X \\mapsto \\R$ называется \\textit{полунепрерывной снизу в точке $x_{0}$ по множеству $X$}, если $$\n    \\left[ \n    \\begin{gathered}\n        x_{0} \\textrm{~---~ изолирована,} \\\\\n        \\lim\\limits_{\\overline{\\underset{x \\in X}{x \\to x_{0}}}} f(x) \\geq f(x_{0}).\n    \\end{gathered}\n    \\right.$$"
+              },
+              {
+                "term": "\\textit{Характеристическая функция множества (индикатор)}",
+                "definition": "$$     \\chi_{E} (x) = \\begin{cases}\n         1, x\\in E, \\\\\n         0, x\\notin E,\n     \\end{cases}\n     \\text{где } E \\subset \\R \\text{~---~множество.}$$"
+              }
+            ],
+            "theorems": [
+              {
+                "name": "",
+                "formulation": "Пусть $f$: $X \\mapsto \\R$. Тогда $ \\overline{\\lim\\limits_{\\underset{x \\in X}{x\\to x_0}}} f(x) = \\sup \\{ \\overline{\\lim\\limits_{n\\to \\infty}} f(x_{n}): \\{x_{n}\\} \\subset X$, $\\{{x_n}\\}$ ~---~последовательность  Гейне в точке $x_{0}\\}$ $ \\lim\\limits_{\\overline{\\underset{x \\in X}{x\\to x_0}}} f(x) = \\inf \\{ \\lim\\limits_{\\overline{n\\to \\infty}} f(x_{n}): \\{x_{n}\\} \\subset X$, $\\{{x_n}\\}$ ~---~последовательность  Гейне в точке $x_{0}\\}$",
+                "proof": "Докажем теорему для верхнего предела, так как для нижнего доказательство аналогично.\n\n    Обозначим $ \\sup \\{ \\overline{\\lim\\limits_{n\\to \\infty}} f(x_{n}): \\{x_{n}\\} \\subset X, \\{x_{n}\\} \\textrm{ ~---~ последовательность  Гейне в точке}\\  x_{0}\\}$ как $J$, а также $E \\equiv    \\mathring{U}_{\\delta} (x_{0}) \\cap X$.\n\n    Чтобы доказать утверждение нужно проверить два неравенства: \n    $\\begin{cases}\n         \\overline{\\lim\\limits_{\\underset{x \\in X}{x\\to x_0}}} f(x) \\leq J, \\\\\n          \\overline{\\lim\\limits_{\\underset{x \\in X}{x\\to x_0}}} f(x) \\geq J.\n    \\end{cases} $\n\n    Докажем второе неравенство. Возьмём произвольную $\\delta > 0$ и произвольную последовательность Гейне $\\{x_{n}\\} \\subset X$ в точке $x_{0}$.\n\n    Так как $\\{x_{n}\\}$~---~последовательность Гейне, то\n    $$ \\exists N(\\delta) \\in \\N: \\ \\forall n \\geq N(\\delta) \\hookrightarrow x_{n} \\in E$$\n    $$ \\overline{\\lim\\limits_{n \\to \\infty}} f(x_{n}) = \\underset{N \\in \\N}{\\inf} \\underset{n \\geq N}{\\sup} f(x_{n}) \\leq \\underset{n \\geq N(\\delta)}{\\sup} f(x_{n})\n    $$\n    $$ \\underset{E}{\\sup} f(x) \\geq \\underset{n \\geq N(\\delta)}{\\sup} f(x_{n}) = \\overline{\\lim\\limits_{n \\to \\infty}} f(x_{n}) $$\n\n    <<Заморозим>> $x_{n}$ и будем менять $\\delta > 0$. Можно взять $\\inf$ от обеих частей:\n\n    $$ \\underset{\\delta > 0}{\\inf} \\underset{E}{\\sup} f(x) \\geq \\overline{\\lim\\limits_{n \\to \\infty}} f(x_{n})\n    $$\n\n    Левая часть не зависит от выбора $x_{n}$, следовательно, беря супремум по всем $\\{x_{n}\\}$, получим нужное неравенство:\n    $$\n    \\overline{\\lim\\limits_{\\underset{x \\in X}{x\\to x_0.$$    Покажем теперь, что:\n    $$  \\overline{\\lim\\limits_{\\underset{x \\in X}{x\\to x_0}}} f(x) \\leq J.\n    $$\n\n    Найдём последовательность Гейне в точке $x_{0}$, которая <<в точности даст левую часть>>. В силу \\hyperlink{lemm4.6}{леммы 4.6}: \\hypertarget{prop4.9}\n    {}\n    $$\n    \\forall n \\in \\N  \\ \\underset{\\delta \\in (0, \\frac{1}{n})}{\\inf} \\underset{E}{\\sup} f(x) = \\overline{\\lim\\limits_{\\underset{x \\in X}{x\\to x_0}}} f(x) \\  \\quad (1)\n    $$\n\n\n\n    По определению инфимума  $\\forall n \\in \\N$ в силу \\hyperlink{prop4.9}{равенства (1)}: \n    \n    $$\\exists \\delta \\in ( 0, \\frac{1}{n}): \\underset{E}{\\sup} f(x) \\in U_{\\frac{1}{n}} \\Bigl( \\overline{\\lim\\limits_{\\underset{x \\in X}{x\\to x_0}}} f(x) \\Bigr)$$\n\n    Но по определению супремума\n    $$ \\exists x_{n}\\in E: \\ \\ f(x_{n}) \\in  U_{\\frac{1}{2n}} \\Bigl( \\overline{\\lim\\limits_{\\underset{x \\in X}{x\\to x_0}}} f(x) \\Bigr).$$\n\n    Получается, мы построили последовательность $\\{\\overline{x_{n}}\\ \\} \\subset X$, которая является последовательностью Гейне в точке $x_{0}$, и при этом $\\lim\\limits_{n \\to \\infty} f(\\overline{x_{n}}) = \\overline{\\lim\\limits_{\\underset{x \\in X}{x\\to x_0}}} f(x)$, значит,\n     $$\\exists \\overline{\\lim\\limits_{n \\to \\infty}} f(\\overline{x_{n}}) = \\lim\\limits_{n \\to \\infty} f(\\overline{x_{n}}) = \\overline{\\lim\\limits_{\\underset{x \\in X}{x\\to x_0}}} f(x).\n    $$"
+              },
+              {
+                "name": "\\hypertarget{thrm4.10}{(О верхнем и нижнем пределе для функции) }",
+                "formulation": "Пусть $f$: $X \\mapsto \\R$, $A \\in \\Hat{\\R}$. Следующие условия эквивалентны:\n\n\\begin{enumerate}\n    \\item $ \\exists \\lim\\limits_{\\underset{x \\in X}{x\\to x_0}} f(x) = A;$\n    \\item $\\overline{\\lim\\limits_{\\underset{x \\in X}{x\\to x_0}}} f(x) = \\lim\\limits_{\\underset{x \\in X}{\\overline{x\\to x_0}}} f(x) = A.$\n\\end{enumerate}    ",
+                "proof": "$(1) \\Leftrightarrow \\forall \\ \\textrm{последовательности Гейне} \\ \\{x_{n}\\} \\subset X \\  \\textrm{в точке}\\  x_{0}$\n\n    $$\n    \\lim\\limits_{n \\to \\infty} f(x_{n}) = A  \\Leftrightarrow \n    \\begin{cases}\n        \\overline{\\lim\\limits_{n \\to \\infty}} f(x_{n}) = A, \\\\\n        \\lim\\limits_{\\overline{n \\to \\infty}} f(x_{n}) = A,\n    \\end{cases}\n    \\Leftrightarrow \n    \\begin{cases}\n        \\overline{\\lim\\limits_{\\underset{x \\in X}{x\\to x_0}}} f(x) = A, \\\\\n        \\lim\\limits_{\\overline{\\underset{x \\in X}{x\\to x_0}}} f(x) = A.\n    \\end{cases}\n    \\Leftrightarrow (2)$$"
+              },
+              {
+                "name": "",
+                "formulation": "Пусть $K \\subset \\R$~---~компакт, $K \\neq \\varnothing.$\n\n    Пусть $f$ непрерывна на $K.$ Тогда $f(K) := \\{ f(x) : x \\in K$\\} ~---~ компакт.",
+                "proof": "Пусть $y_{n} \\subset \\{f(K)\\} \\Rightarrow \\exists \\{x_{n}\\} \\subset K\\text{: }f(x_{n}) = y_{n} \\ \\forall n \\in \\N \\Rightarrow $\n\n    $$\\Rightarrow\n    \\exists \\{x_{n_j}\\} \\subset K (\\{x_{nj}\\} \\textrm{~---~подпоследовательность } \\{x_n\\})\\ \\textrm{и}\\ \\exists \\ x^{*} \\in K : x_{n_j} \\to x^{*}, j \\to \\infty.\n    $$\n\n    Тогда так как $f$ непрерывна в точке $x^{*}$, то $\\lim\\limits_{j \\to \\infty} f(x_{n_j}) = f(x^{*}) \\in f(K).$\n\n    $$f(x_{n_j}) = y_{n_j} \\ \\  \\forall j \\in \\N\n    $$\n    $$ y_{n_j} \\to f(x^{*}) \\in f(K), j \\to \\infty.\n    $$\n\n    Поскольку $\\{y_{n}\\} \\subset f(K)$ выбрана произвольно, то $f(K)$~---~компакт."
+              },
+              {
+                "name": "",
+                "formulation": "Пусть $f$: $X \\mapsto \\R, x_{0} \\in X$. Тогда $f$  непрерывна в точке $x_{0}$ по множеству $X \\Leftrightarrow$ она полунепрерывна снизу в точке $x_{0}$ по множеству $X$ и полунепрерывна сверху в точке $x_{0}$ по множеству $X$.",
+                "proof": "Если $x_{0}$~---~изолированнная точка, то доказательство очевидно.\n\n    Если $x_{0}$~---~предельная точка, то непрерывность в ней по множеству $X$ $\\Leftrightarrow$\n    $$\\Leftrightarrow \\exists \\lim\\limits_{\\underset{x \\subset X}{x \\to x_{0}}} f(x) = f(x_{0}) \\Leftrightarrow \\begin{cases}\n        \\overline{\\lim\\limits_{\\underset{x \\in X}{x\\to x_0}}} f(x) =  f(x_{0}), \\\\\n        \\lim\\limits_{\\overline{\\underset{x \\in X}{x\\to x_0}}} f(x) =  f(x_{0}).\n    \\end{cases} \\quad (*)$$\n    По \\hyperlink{thrm4.10}{теореме о верхнем и нижнем пределе для функции}.\n\n    Заметим, что:\n    $$f(x_{0}) \\leq\\lim\\limits_{\\overline{\\underset{x \\in X}{x\\to x_0}}} f(x) \\leq \\overline{\\lim\\limits_{\\underset{x \\in X}{x\\to x_0}}} f(x) \\leq f(x_{0}) \\Leftrightarrow (*)$$"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
